@@ -80,3 +80,31 @@ Example Request
 ```
 events.php?classroomId=3
 ```
+
+## Start Classes
+This event represents the beginning of classes. This can be implemented as initializing the data model
+```
+Format: GET
+```
+Fields
+```
+None
+```
+Example Request
+```
+events.php
+```
+
+## End Classes
+This event represents the ending of classes. This can be implemented as clearing the data model
+```
+Format: GET
+```
+Fields
+```
+None
+```
+Example Request
+```
+events.php
+```
