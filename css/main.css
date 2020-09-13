@@ -1,0 +1,37 @@
+.primaryDisplayTable table {
+    border: 1px solid black;
+}
+
+.primaryDisplayTable td {
+    border: 1px solid black;
+}
+
+.primaryDisplayTable th {
+    border: 1px solid black;
+}
+
+.eventsTable table {
+    border: 1px solid white;
+}
+
+.eventsTable th {
+    border: 1px solid white;
+}
+
+.eventsTable td {
+    border: 1px solid white;
+}
+
+.eventContainer{
+    border-style: solid;
+}
+
+.headerBar{
+    background-color: #0077C8;
+}
+
+.logoContainer{
+    margin: auto;
+    width: 252px;
+    padding: 10px;
+}
