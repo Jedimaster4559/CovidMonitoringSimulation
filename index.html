@@ -5,7 +5,7 @@
         <title>UAH Covid Monitoring</title>
         <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
         <link rel="stylesheet" href="css/main.css">
-        <script src="events.js"></script>
+        <script src="js/events.js"></script>
     </head>
     <body>
         <!-- Website Header -->
@@ -14,6 +14,9 @@
                 <img src="images/whitelogo.svg" alt="UAH Logo">
             </div>
         </div>
+
+        <!-- Select Classroom and Start/End Class -->
+        <p>TODO: add this section</p>
 
         <!-- Main Display -->
         <div class="primaryDisplayTable">
@@ -65,8 +68,8 @@
                         <div class="eventContainer">
                             <form>
                                 <div class="eventTitle">Update Persons State</div>
-                                <div class="eventField">Person ID: <input type="text" name="UpdatePersonId"></div>
-                                <div class="eventField">Wearing Mask: <input type="checkbox" name="updateWearingMask"></div>
+                                <div class="eventField">Person ID: <input type="text" name="updatePersonId"></div>
+                                <div class="eventField">Wearing Mask: <input type="checkbox" name="updateWearingMask" checked></div>
                                 <div class="eventField">Wearing Face Shield: <input type="checkbox" name="updateWearingFaceshield"></div>
 
                                 <button type="button" onclick="updatePersonState(this.form)">
