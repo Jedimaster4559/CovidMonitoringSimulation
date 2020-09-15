@@ -81,40 +81,4 @@ class Cleaner extends Rectangle {
     }
 }
 
-// class entrance extends Rectangle {
-//     // Member variables 
-//     private $useCount = 0;
-    
-//     // Member functions
-//     // Triggers an alarm event
-//     public function alarm() {
-//         echo "Alarm Event! User did not use Sanitizer.";
-//     }
-
-//     // The person enters the rectangle and uses the sanitizer
-//     public function enterUse() {
-//         $this->useSanitizer();
-//     }
-
-//     // The person enters the rectangle and does not use the sanitizer
-//     public function enterNoUse() {
-//         $this->alarm();
-//     }
-
-//     // The person uses sanitizer
-//     // The counter is increased
-//     public function useSanitizer() {
-//         $this->useCount += 1;
-//     }
-
-//     // The person leaves
-//     // Function checks if the user uses sanitizer before they go
-//     public function leave() {
-//         if ($this->useCount != 2) {
-//             $this->alarm();
-//         }
-//         else {
-//             $this->useCount = 0;
-//         }
-//     }
-// }
+?>

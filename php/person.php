@@ -42,4 +42,5 @@ class Instructor extends Person {
         $this->alarm();
     }
 }
+
 ?>
