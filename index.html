@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>UAH Covid Monitoring</title>
+        <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/events.js"></script>
+    </head>
+    <body>
+        <!-- Website Header -->
+        <div class="headerBar">
+            <div class="logoContainer">
+                <img src="images/whitelogo.svg" alt="UAH Logo">
+            </div>
+        </div>
+
+        <!-- Select Classroom and Start/End Class -->
+        <p>TODO: add this section</p>
+
+        <!-- Main Display -->
+        <div class="primaryDisplayTable">
+            <table>
+                <tr>
+                    <td>Room Entrance: Hand Sanatizer Station</td>
+                    <td rowspan="3">Aisleway</td>
+                    <td>Instructor Rectangle Desk & Lysol</td>
+                    <td colspan="2">Student Question Rectangle</td>
+                </tr>
+                <tr>
+                    <td>Student Rectangle #1 Desk & Lysol</td>
+                    <td>Student Rectangle #2 Desk & Lysol</td>
+                    <td rowspan="2">Aisleway</td>
+                    <td>Student Rectangle #3 Desk & Lysol</td>
+                </tr>
+                <tr>
+                    <td>Aisleway</td>
+                    <td>Student Rectangle #5 Desk & Lysol</td>
+                    <td>Student Rectangle #4 Desk & Lysol</td>
+                </tr>
+                <tr>
+                    <td colspan="5">Aisleway</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Events Submissions -->
+        <div class="eventsTable">
+            <table>
+                <tr>
+                    <!-- Move a Person Event -->
+                    <td>
+                        <div class="eventContainer">
+                            <form>
+                                <div class="eventTitle">Move a Person</div>
+                                <div class="eventField">Person ID: <input type="text" name="movePersonId"></div>
+                                <div class="eventField">Destination Square: <input type="text" name="moveDestinationSquare"></div>
+
+                                <button type="button" onclick="movePerson(this.form)">
+                                    Move
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+
+                    <!-- Edit Person State -->
+                    <td>
+                        <div class="eventContainer">
+                            <form>
+                                <div class="eventTitle">Update Persons State</div>
+                                <div class="eventField">Person ID: <input type="text" name="updatePersonId"></div>
+                                <div class="eventField">Wearing Mask: <input type="checkbox" name="updateWearingMask" checked></div>
+                                <div class="eventField">Wearing Face Shield: <input type="checkbox" name="updateWearingFaceshield"></div>
+
+                                <button type="button" onclick="updatePersonState(this.form)">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Use Lysol -->
+                    <td>
+                        <div class="eventContainer">
+                            <form>
+                                <div class="eventTitle">Use Lysol</div>
+                                <div class="eventField">Person ID: <input type="text" name="useLysolPersonId"></div>
+
+                                <button type="button" onclick="useLysol(this.form)">
+                                    Use Lysol
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+
+                    <!-- Use Hand Sanitizer -->
+                    <td>
+                        <div class="eventContainer">
+                            <form>
+                                <div class="eventTitle">Use Hand Sanitizer</div>
+                                <div class="eventField">Person ID: <input type="text" name="useSanitizerPersonId"></div>
+
+                                <button type="button" onclick="useSanitizer(this.form)">
+                                    Use Hand Sanitizer
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
