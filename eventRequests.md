@@ -14,10 +14,11 @@ Fields
 classroomId: int
 personId: int
 destinationId: int
+wipe: boolean
 ```
 Example Request
 ```
-events.php?classroomId=3&personId=4&destinationId=7
+events.php?classroomId=3&personId=4&destinationId=7&wipe=false
 ```
 
 ## Update Person State
@@ -27,14 +28,13 @@ Format: GET
 ```
 Fields
 ```
-classroomId: int
 personId: int
 mask: boolean
 faceshield: boolean
 ```
 Example Request
 ```
-events.php?classroomId=2&personId=2&mask=true&faceshield=false
+events.php?personId=2&mask=true&faceshield=false
 ```
 
 ## Use Lysol
@@ -44,12 +44,11 @@ Format: GET
 ```
 Fields
 ```
-classroomId: int
 personId: int
 ```
 Example Request
 ```
-events.php?classroomId=2&personId=5
+events.php?personId=5
 ```
 
 ## Use Hand Sanitizer
@@ -59,12 +58,11 @@ Format: GET
 ```
 Fields
 ```
-classroomId: int
 personId: int
 ```
 Example Request
 ```
-events.php?classroomId=2&personId=5
+events.php?personId=5
 ```
 
 ## Request Data Update
@@ -107,4 +105,20 @@ None
 Example Request
 ```
 events.php
+```
+
+## Add Person
+This event represents adding a new person to a specific class.
+```
+Format: GET
+```
+Fields
+```
+classroomId: int
+personId: int
+isTeacher: boolean
+```
+Example Request
+```
+events.php?classroomId=2&personId=4&isTeacher=false
 ```
