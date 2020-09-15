@@ -2,9 +2,9 @@
 
 class Person {
     // Member variables
-    private $mask;
-    private $rectangle;
-    private $personId;
+    public $mask;
+    public $rectangle;
+    public $personId;
 
     // Member functions
     // Constructor

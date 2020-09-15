@@ -8,7 +8,7 @@ class Classroom {
     
     // Member functions
     // Constructor
-    function __construct($myclassroomId) {
+    function __construct(int $myclassroomId) {
         $this->classroomId = $myclassroomId;
     }
 
@@ -19,12 +19,12 @@ class Classroom {
 
     // Adds a Rectangle to the Classroom
     public function addRectangle($rectangle) {
-        array_push($rectangles, $rectangle);
+        array_push($this->rectangles, $rectangle);
     }
 
     // Adds a Person to the Classroom
     public function addPerson($person) {
-        array_push($occupants, $person);
+        array_push($this->occupants, $person);
     }
 
     // Returns the Classroom's rectangles

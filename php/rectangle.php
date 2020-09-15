@@ -2,13 +2,14 @@
 
 class Rectangle {
     // Member variables
-    private $people;
-    private $destinationId;
+    public $people;
+    public $destinationId;
 
     // Member functions
     // Constructor
-    function __construct($mydestinationId) {
+    function __construct(int $mydestinationId) {
         $this->destinationId = $mydestinationId;
+        $this->people = 0;
     }
 
     // Triggers an alarm event
