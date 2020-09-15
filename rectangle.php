@@ -3,8 +3,14 @@
 class Rectangle {
     // Member variables
     private $people;
+    private $destinationId;
 
     // Member functions
+    // Constructor
+    function __construct($mydestinationId) {
+        $this->destinationId = $mydestinationId;
+    }
+
     // Triggers an alarm event
     private function alarm() {
         echo "Alarm Event! There are too many people in the area.";
