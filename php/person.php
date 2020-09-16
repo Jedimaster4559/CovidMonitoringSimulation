@@ -16,12 +16,12 @@ class Person {
 
     // Person wears their mask incorrectly; set the alarm bool true
     public function wearMaskIncorrectly() {
-        $maskErrorAlarm = true;
+        $this->maskErrorAlarm = true;
     }
 
     // Person corrects their mask; set the alarm bool to false
     public function wearMaskCorrectly() {
-        $maskErrorAlarm = false;
+        $this->maskErrorAlarm = false;
     }
 
     // Resets the Person's Rectangle
@@ -38,12 +38,12 @@ class Instructor extends Person {
     // Member functions 
     // Person wears their shield incorrectly; sets alarm to true
     public function wearShieldIncorrectly() {
-        $shieldErrorAlarm = true;
+        $this->shieldErrorAlarm = true;
     }
 
     // Person corrects their shield; sets alarm to false
     public function wearShieldCorrectly() {
-        $shieldErrorAlarm = false;
+        $this->shieldErrorAlarm = false;
     }
 }
 

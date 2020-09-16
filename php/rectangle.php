@@ -19,10 +19,10 @@ class Rectangle {
     public function addPerson() {
         $this->people += 1;
         if ($this->people > 1) {
-            $tooManyPeopleAlarm = true;
+            $this->tooManyPeopleAlarm = true;
         }
         else {
-            $tooManyPeopleAlarm = false;
+            $this->tooManyPeopleAlarm = false;
         }
     }
 }
@@ -30,6 +30,7 @@ class Rectangle {
 class Cleaner extends Rectangle {
     // Member variables 
     public $type;
+    public $cleanCount = 0;
     public $noSanitizerUsedAlarm = false;
     public $noLysolUsedAlarm = false;
     
@@ -42,10 +43,10 @@ class Cleaner extends Rectangle {
     // Triggers an alarm event
     public function alarm() {
         if ($this->type == "desk") {
-            $noLysolUsedAlarm = true;
+            $this->noLysolUsedAlarm = true;
         }
         elseif ($this->type == "entrance") {
-            $noSanitizerUsedAlarm = true;
+            $this->noSanitizerUsedAlarm = true;
         }
     }
 
@@ -56,20 +57,39 @@ class Cleaner extends Rectangle {
 
     // The person uses the cleaner
     public function enterUse() {
-        $noLysolUsedAlarm = false;
-        $noSanitizerUsedAlarm = false;
+        $this->noLysolUsedAlarm = false;
+        $this->noSanitizerUsedAlarm = false;
+    }
+
+    // The person uses the cleaner
+    public function clean() {
+        $this->cleanCount += 1;
+        $this->noLysolUsedAlarm = false;
+        $this->noSanitizerUsedAlarm = false;
     }
 
     // The person leaves
     // Function checks if the user uses lysol before they go
-    public function leaveNoUse() {
-        $this->alarm();
-    }
+    public function leave() {
+        if ($this->type == "entrance") {
+            if ($this->cleanCount < 2) {
+                $this->alarm();
+            }
+            else {
+                $this->noLysolUsedAlarm = false;
+                $this->noSanitizerUsedAlarm = false;
+            }
+        }
 
-    // The person leaves and uses the cleaner 
-    public function leaveUse() {
-        $noLysolUsedAlarm = false;
-        $noSanitizerUsedAlarm = false;
+        else {
+            if ($this->cleanCount < 1) {
+                $this->alarm();
+            }
+            else {
+                $this->noLysolUsedAlarm = false;
+                $this->noSanitizerUsedAlarm = false;
+            }
+        }
     }
 }
 

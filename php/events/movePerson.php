@@ -22,10 +22,6 @@ $person = $__GET;
 $destination = $__GET;
 $wipe = $__GET;
 
-if ($wipe == false) {
-    $rec101->alarm();
-}
-
 if ($class == 1) {
     $people = $class1->occupants;
     $rectangles = $class1->rectangles;
@@ -35,15 +31,23 @@ if ($class == 1) {
         if ($moveHere->destinationId == $destination) {
             $rectangleMove = $moveHere;
         }
+        $count++;
     }
     $count = 0;
     while ($count < count($class1->occupants)) {
         $moving = $people[$count];
         if ($moving->personID == $person) {
             $moving->move($moveHere);
+            if ($wipe == true) {
+                $moving->enterUse();
+            }
+            else {
+                $moving->enterNoUse();
+            }
             $jsonClass = $class1;
             echo $jsonClass;
         }
+        $count++;
     }
 }
 
@@ -56,15 +60,23 @@ if ($class == 2) {
         if ($moveHere->destinationId == $destination) {
             $rectangleMove = $moveHere;
         }
+        $count++;
     }
     $count = 0;
     while ($count < count($class2->occupants)) {
         $moving = $people[$count];
         if ($moving->personID == $person) {
             $moving->move($moveHere);
+            if ($wipe == true) {
+                $moving->enterUse();
+            }
+            else {
+                $moving->enterNoUse();
+            }
             $jsonClass = $class2;
             echo $jsonClass;
         }
+        $count++;
     }
 }
 
@@ -77,20 +89,24 @@ if ($class == 3) {
         if ($moveHere->destinationId == $destination) {
             $rectangleMove = $moveHere;
         }
+        $count++;
     }
     $count = 0;
     while ($count < count($class3->occupants)) {
         $moving = $people[$count];
         if ($moving->personID == $person) {
             $moving->move($moveHere);
+            if ($wipe == true) {
+                $moving->enterUse();
+            }
+            else {
+                $moving->enterNoUse();
+            }
             $jsonClass = $class3;
             echo $jsonClass;
         }
+        $count++;
     }
 }
-
-
-
-
 
 ?>
