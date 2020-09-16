@@ -6,6 +6,7 @@ class Person {
     public $rectangle;
     public $personId;
     public $maskErrorAlarm = false;
+    public $status = "student";
 
     // Member functions
     // Constructor
@@ -34,6 +35,7 @@ class Instructor extends Person {
     // Member variables 
     public $shield;
     public $shieldErrorAlarm = false;
+    public $status = "teacher";
 
     // Member functions 
     // Person wears their shield incorrectly; sets alarm to true
