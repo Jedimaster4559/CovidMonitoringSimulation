@@ -33,7 +33,6 @@ class Person {
 
 class Instructor extends Person {
     // Member variables 
-    public $shield;
     public $shieldErrorAlarm = false;
     public $status = "teacher";
 
