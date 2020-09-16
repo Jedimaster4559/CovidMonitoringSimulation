@@ -40,6 +40,7 @@ while ($c1Count < count($class1->occupants)) {
         $personClass = $class1;
         $continue = false;
     }
+    $c1Count++;
 }
 
 if ($continue == false) {
@@ -78,6 +79,7 @@ else {
             $personClass = $class2;
             $continue = false;
         }
+        $c2Count++;
     }
 
     if ($continue == false) {
@@ -116,6 +118,7 @@ else {
                 $personClass = $class1;
                 $continue = false;
             }
+            $c3Count++;
         }
         $jsonClass = json_encode($personClass);
         echo $jsonClass;
