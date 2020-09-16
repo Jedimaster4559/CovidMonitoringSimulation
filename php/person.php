@@ -5,7 +5,7 @@ class Person {
     //public $mask;
     public $rectangle;
     public $personId;
-    public $maskError = false;
+    public $maskErrorAlarm = false;
 
     // Member functions
     // Constructor
@@ -14,16 +14,17 @@ class Person {
         $this->rectangle = $myRectangle;
     }
 
-    // Alarm event
-    private function alarm() {
-        $maskError = true;
-    }
-
-    // Person wears their mask incorrectly; calls the alarm event
+    // Person wears their mask incorrectly; set the alarm bool true
     public function wearMaskIncorrectly() {
-        $this->alarm();
+        $maskErrorAlarm = true;
     }
 
+    // Person corrects their mask; set the alarm bool to false
+    public function wearMaskCorrectly() {
+        $maskErrorAlarm = false;
+    }
+
+    // Resets the Person's Rectangle
     public function move($rectangle) {
         $this->rectangle = $rectangle;
     }
@@ -32,17 +33,17 @@ class Person {
 class Instructor extends Person {
     // Member variables 
     public $shield;
-    public $shieldError = false;
+    public $shieldErrorAlarm = false;
 
     // Member functions 
-    // Call alarm event
-    public function alarm() {
-        $shieldError = true;
+    // Person wears their shield incorrectly; sets alarm to true
+    public function wearShieldIncorrectly() {
+        $shieldErrorAlarm = true;
     }
 
-    // Person wears their shield incorrectly; calls the alarm event
-    public function wearShieldIncorrectly() {
-        $this->alarm();
+    // Person corrects their shield; sets alarm to false
+    public function wearShieldCorrectly() {
+        $shieldErrorAlarm = false;
     }
 }
 

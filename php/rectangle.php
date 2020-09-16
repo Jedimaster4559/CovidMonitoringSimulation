@@ -4,7 +4,7 @@ class Rectangle {
     // Member variables
     public $people;
     public $destinationId;
-    public $tooManyPeopleAlarm;
+    public $tooManyPeopleAlarm = false;
 
     // Member functions
     // Constructor
@@ -13,16 +13,16 @@ class Rectangle {
         $this->people = 0;
     }
 
-    // Triggers an alarm event
-    public function alarm() {
-        $tooManyPeopleAlarm = true;
-    }
-
     // Adds people to a rectangle
+    // If there are more than 1 person in a square
+    // set the alarm bool to true
     public function addPerson() {
         $this->people += 1;
         if ($this->people > 1) {
-            $this->alarm();
+            $tooManyPeopleAlarm = true;
+        }
+        else {
+            $tooManyPeopleAlarm = false;
         }
     }
 }
@@ -30,8 +30,8 @@ class Rectangle {
 class Cleaner extends Rectangle {
     // Member variables 
     public $type;
-    public $noSanitizerUsed = false;
-    public $noLysolUsed = false;
+    public $noSanitizerUsedAlarm = false;
+    public $noLysolUsedAlarm = false;
     
     // Member functions
     function __construct(int $mydestinationId, $mytype) {
@@ -42,10 +42,10 @@ class Cleaner extends Rectangle {
     // Triggers an alarm event
     public function alarm() {
         if ($this->type == "desk") {
-            $noLysolUsed = true;
+            $noLysolUsedAlarm = true;
         }
         elseif ($this->type == "entrance") {
-            $noSanitizerUsed = true;
+            $noSanitizerUsedAlarm = true;
         }
     }
 
@@ -54,10 +54,22 @@ class Cleaner extends Rectangle {
         $this->alarm();
     }
 
+    // The person uses the cleaner
+    public function enterUse() {
+        $noLysolUsedAlarm = false;
+        $noSanitizerUsedAlarm = false;
+    }
+
     // The person leaves
     // Function checks if the user uses lysol before they go
     public function leaveNoUse() {
         $this->alarm();
+    }
+
+    // The person leaves and uses the cleaner 
+    public function leaveUse() {
+        $noLysolUsedAlarm = false;
+        $noSanitizerUsedAlarm = false;
     }
 }
 
