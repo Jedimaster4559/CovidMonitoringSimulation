@@ -4,19 +4,6 @@ include '../person.php';
 include '../rectangle.php';
 include 'start.php';
 
-// Format: GET
-// ```
-// Fields
-// ```
-// classroomId: int
-// personId: int
-// destinationId: int
-// wipe: boolean
-// ```
-// Example Request
-// ```
-// events.php?classroomId=3&personId=4&destinationId=7&wipe=false
-
 $class = $__GET;
 $person = $__GET;
 $destination = $__GET;
