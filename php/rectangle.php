@@ -3,13 +3,15 @@
 class Rectangle {
     // Member variables
     public $people;
+    public $type;
     public $destinationId;
     public $tooManyPeopleAlarm = false;
 
     // Member functions
     // Constructor
-    function __construct(int $mydestinationId) {
+    function __construct(int $mydestinationId, $mytype) {
         $this->destinationId = $mydestinationId;
+        $this->type = $mytype;
         $this->people = 0;
     }
 
@@ -29,7 +31,6 @@ class Rectangle {
 
 class Cleaner extends Rectangle {
     // Member variables 
-    public $type;
     public $cleanCount = 0;
     public $noSanitizerUsedAlarm = false;
     public $noLysolUsedAlarm = false;
