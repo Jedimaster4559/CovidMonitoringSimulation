@@ -28,7 +28,7 @@ if ($class == 1) {
     $count = 0;
     while ($count < count($class1->rectangles)) {
         $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId == $destination) {
+        if ($moveHere->destinationId === $destination) {
             $rectangleMove = $moveHere;
         }
         $count++;
@@ -36,28 +36,56 @@ if ($class == 1) {
     $count = 0;
     while ($count < count($class1->occupants)) {
         $moving = $people[$count];
-        if ($moving->personID == $person) {
+        if ($moving->personId === $person->personId) {
             $moving->move($moveHere);
-            if ($wipe == true) {
-                $moving->enterUse();
+            if (($moveHere->type === "desk") && ($wipe == true)) {
+                $moveHere->enterUse();
             }
-            else {
-                $moving->enterNoUse();
+            elseif (($moveHere->type === "desk") && ($wipe == false)) {
+                $moveHere->enterNoUse();
             }
-            $jsonClass = $class1;
+            $jsonClass = json_encode($class1);
             echo $jsonClass;
         }
         $count++;
     }
 }
 
-if ($class == 2) {
+if ($class == 1) {
+    $people = $class1->occupants;
+    $rectangles = $class1->rectangles;
+    $count = 0;
+    while ($count < count($class1->rectangles)) {
+        $moveHere = $rectangles[$count];
+        if ($moveHere->destinationId === $destination) {
+            $rectangleMove = $moveHere;
+        }
+        $count++;
+    }
+    $count = 0;
+    while ($count < count($class1->occupants)) {
+        $moving = $people[$count];
+        if ($moving->personId === $person->personId) {
+            $moving->move($moveHere);
+            if (($moveHere->type === "desk") && ($wipe == true)) {
+                $moveHere->enterUse();
+            }
+            elseif (($moveHere->type === "desk") && ($wipe == false)) {
+                $moveHere->enterNoUse();
+            }
+            $jsonClass = json_encode($class1);
+            echo $jsonClass;
+        }
+        $count++;
+    }
+}
+elseif ($class == 2) {
     $people = $class2->occupants;
     $rectangles = $class2->rectangles;
     $count = 0;
     while ($count < count($class2->rectangles)) {
         $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId == $destination) {
+        if ($moveHere->destinationId === $destination) {
             $rectangleMove = $moveHere;
         }
         $count++;
@@ -65,28 +93,27 @@ if ($class == 2) {
     $count = 0;
     while ($count < count($class2->occupants)) {
         $moving = $people[$count];
-        if ($moving->personID == $person) {
+        if ($moving->personId === $person->personId) {
             $moving->move($moveHere);
-            if ($wipe == true) {
-                $moving->enterUse();
+            if (($moveHere->type === "desk") && ($wipe == true)) {
+                $moveHere->enterUse();
             }
-            else {
-                $moving->enterNoUse();
+            elseif (($moveHere->type === "desk") && ($wipe == false)) {
+                $moveHere->enterNoUse();
             }
-            $jsonClass = $class2;
+            $jsonClass = json_encode($class2);
             echo $jsonClass;
         }
         $count++;
     }
 }
-
-if ($class == 3) {
+else {
     $people = $class3->occupants;
     $rectangles = $class3->rectangles;
     $count = 0;
     while ($count < count($class3->rectangles)) {
         $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId == $destination) {
+        if ($moveHere->destinationId === $destination) {
             $rectangleMove = $moveHere;
         }
         $count++;
@@ -94,19 +121,20 @@ if ($class == 3) {
     $count = 0;
     while ($count < count($class3->occupants)) {
         $moving = $people[$count];
-        if ($moving->personID == $person) {
+        if ($moving->personId === $person->personId) {
             $moving->move($moveHere);
-            if ($wipe == true) {
-                $moving->enterUse();
+            if (($moveHere->type === "desk") && ($wipe == true)) {
+                $moveHere->enterUse();
             }
-            else {
-                $moving->enterNoUse();
+            elseif (($moveHere->type === "desk") && ($wipe == false)) {
+                $moveHere->enterNoUse();
             }
-            $jsonClass = $class3;
+            $jsonClass = json_encode($class3);
             echo $jsonClass;
         }
         $count++;
     }
 }
+
 
 ?>
