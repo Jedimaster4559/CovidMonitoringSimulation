@@ -29,7 +29,7 @@ if ($continue == false) {
 else {
     $c2People = $class2->occupants;
     $c2Count = 0;
-    while ($c1Count < count($class2->occupants)) {
+    while ($c2Count < count($class2->occupants)) {
         $myPerson = $class2->occupants[$c2Count];
         if ($myPerson->personId == $person) {
             $rec = $myPerson->rectangle;
@@ -48,12 +48,12 @@ else {
     else {
         $c3People = $class3->occupants;
         $c3Count = 0;
-        while ($c1Count < count($class1->occupants)) {
-            $myPerson = $class1->occupants[$c1Count];
+        while ($c3Count < count($class3->occupants)) {
+            $myPerson = $class3->occupants[$c3Count];
             if ($myPerson->personId == $person) {
                 $rec = $myPerson->rectangle;
                 $rec->clean();
-                $personClass = $class1;
+                $personClass = $class3;
                 $continue = false;
             }
             $c3Count++;

@@ -86,10 +86,11 @@ class Cleaner extends Rectangle {
     // The person leaves
     // Function checks if the user uses lysol before they go
     public function leave() {
-        if ($this->type == "entrance") {
+        if ($this->type == "desk") {
             if ($this->cleanCount < 2) {
                 $this->alarm();
                 $this->people -= 1;
+                $this->cleanCount = 0;
             }
             else {
                 $this->noLysolUsedAlarm = false;

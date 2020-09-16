@@ -25,8 +25,7 @@ if ($class == 1) {
         $moving = $people[$count];
         if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
-            $leaving->leave();
-            $moving->move($rectangleMove);
+            $moving->move($leaving, $rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }
@@ -56,8 +55,7 @@ elseif ($class == 2) {
         $moving = $people[$count];
         if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
-            $leaving->leave();
-            $moving->move($rectangleMove);
+            $moving->move($leaving, $rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }
@@ -86,8 +84,7 @@ else {
         $moving = $people[$count];
         if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
-            $leaving->leave();
-            $moving->move($rectangleMove);
+            $moving->move($leave, $rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }

@@ -26,8 +26,10 @@ class Person {
     }
 
     // Resets the Person's Rectangle
-    public function move($rectangle) {
-        $this->rectangle = $rectangle;
+    public function move($leaveRec, $destRec) {
+        $leaveRec->leave();
+        $this->rectangle = $destRec;
+        $destRec->addPerson();
     }
 }
 
