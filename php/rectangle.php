@@ -4,6 +4,7 @@ class Rectangle {
     // Member variables
     public $people;
     public $destinationId;
+    public $tooManyPeopleAlarm;
 
     // Member functions
     // Constructor
@@ -13,50 +14,39 @@ class Rectangle {
     }
 
     // Triggers an alarm event
-    public function peopleAlarm() {
-        echo "Alarm Event! There are too many people in the area.";
+    public function alarm() {
+        $tooManyPeopleAlarm = true;
     }
 
     // Adds people to a rectangle
     public function addPerson() {
         $this->people += 1;
         if ($this->people > 1) {
-            $this->PeopleAlarm();
+            $this->alarm();
         }
-    }
-
-    // Returns the Rectangle name
-    public function getNumPeople() {
-        return $this->people;
     }
 }
 
 class Cleaner extends Rectangle {
     // Member variables 
-    public $useCount = 0;
     public $type;
+    public $noSanitizerUsed = false;
+    public $noLysolUsed = false;
     
     // Member functions
+    function __construct(int $mydestinationId, $mytype) {
+        $this->destinationId = $mydestinationId;
+        $this->type = $mytype;
+    }
+
     // Triggers an alarm event
     public function alarm() {
-        if ($this->type == "Desk") {
-            echo "Alarm Event! Person did not use Lysol.";
+        if ($this->type == "desk") {
+            $noLysolUsed = true;
         }
-        elseif ($this->type == "Entrance") {
-            echo "Alarm Event! Person did not use Sanitizer.";
+        elseif ($this->type == "entrance") {
+            $noSanitizerUsed = true;
         }
-        else {
-            echo "Alarm Event! Person did not use Cleaner.";
-        }
-    }
-
-    public function setType($myType) {
-        $this->type = $myType;
-    }
-
-    // The person enters the rectangle and uses the cleaner
-    public function enterUse() {
-        $this->useCleaner();
     }
 
     // The person enters the rectangle and does not use the cleaner
@@ -64,21 +54,10 @@ class Cleaner extends Rectangle {
         $this->alarm();
     }
 
-    // The person uses cleaner
-    // The counter is increased
-    public function useCleaner() {
-        $this->useCount += 1;
-    }
-
     // The person leaves
     // Function checks if the user uses lysol before they go
-    public function leave() {
-        if ($this->useCount != 2) {
-            $this->alarm();
-        }
-        else {
-            $this->useCount = 0;
-        }
+    public function leaveNoUse() {
+        $this->alarm();
     }
 }
 

@@ -5,6 +5,7 @@ class Person {
     //public $mask;
     public $rectangle;
     public $personId;
+    public $maskError = false;
 
     // Member functions
     // Constructor
@@ -15,7 +16,7 @@ class Person {
 
     // Alarm event
     private function alarm() {
-        echo "Alarm Event! Person is not following mask guidelines.";
+        $maskError = true;
     }
 
     // Person wears their mask incorrectly; calls the alarm event
@@ -31,11 +32,12 @@ class Person {
 class Instructor extends Person {
     // Member variables 
     public $shield;
+    public $shieldError = false;
 
     // Member functions 
     // Call alarm event
     public function alarm() {
-        echo "Alarm Event! Person is not following shield guidelines.";
+        $shieldError = true;
     }
 
     // Person wears their shield incorrectly; calls the alarm event

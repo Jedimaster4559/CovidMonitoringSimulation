@@ -3,19 +3,19 @@ include '../classroom.php';
 include '../person.php';
 include '../rectangle.php';
 
-$class1 = new Classroom(100);
+$class1 = new Classroom(1);
 
-$rec101 = new Rectangle(101);
+$rec101 = new Cleaner(101, "entrance");
 $rec102 = new Rectangle(102);
-$rec103 = new Rectangle(103);
+$rec103 = new Cleaner(103, "desk");
 $rec104 = new Rectangle(104);
-$rec105 = new Rectangle(105);
-$rec106 = new Rectangle(106);
+$rec105 = new Cleaner(105, "desk");
+$rec106 = new Cleaner(106, "desk");
 $rec107 = new Rectangle(107);
-$rec108 = new Rectangle(108);
+$rec108 = new Cleaner(108, "desk");
 $rec109 = new Rectangle(109);
-$rec110 = new Rectangle(110);
-$rec111 = new Rectangle(111);
+$rec110 = new Cleaner(110, "desk");
+$rec111 = new Cleaner(111, "desk");
 $rec112 = new Rectangle(112);
 
 $class1->addRectangle($rec101);
@@ -31,19 +31,19 @@ $class1->addRectangle($rec110);
 $class1->addRectangle($rec111);
 $class1->addRectangle($rec112);
 
-$class2 = new Classroom(200);
+$class2 = new Classroom(2);
 
-$rec201 = new Rectangle(201);
+$rec201 = new Cleaner(201, "entrance");
 $rec202 = new Rectangle(202);
-$rec203 = new Rectangle(203);
+$rec203 = new Cleaner(203, "desk");
 $rec204 = new Rectangle(204);
-$rec205 = new Rectangle(205);
-$rec206 = new Rectangle(206);
+$rec205 = new Cleaner(205, "desk");
+$rec206 = new Cleaner(206, "desk");
 $rec207 = new Rectangle(207);
-$rec208 = new Rectangle(208);
+$rec208 = new Cleaner(208, "desk");
 $rec209 = new Rectangle(209);
-$rec210 = new Rectangle(210);
-$rec211 = new Rectangle(211);
+$rec210 = new Cleaner(210, "desk");
+$rec211 = new Cleaner(211, "desk");
 $rec212 = new Rectangle(212);
 
 $class2->addRectangle($rec201);
@@ -59,19 +59,19 @@ $class2->addRectangle($rec210);
 $class2->addRectangle($rec211);
 $class2->addRectangle($rec212);
 
-$class3 = new Classroom(300);
+$class3 = new Classroom(3);
 
-$rec301 = new Rectangle(301);
+$rec301 = new Cleaner(301, "entrance");
 $rec302 = new Rectangle(302);
-$rec303 = new Rectangle(303);
+$rec303 = new Cleaner(303, "desk");
 $rec304 = new Rectangle(304);
-$rec305 = new Rectangle(305);
-$rec306 = new Rectangle(306);
+$rec305 = new Cleaner(305, "desk");
+$rec306 = new Cleaner(306, "desk");
 $rec307 = new Rectangle(307);
-$rec308 = new Rectangle(308);
+$rec308 = new Cleaner(308, "desk");
 $rec309 = new Rectangle(309);
-$rec310 = new Rectangle(310);
-$rec311 = new Rectangle(311);
+$rec310 = new Cleaner(310, "desk");
+$rec311 = new Cleaner(311, "desk");
 $rec312 = new Rectangle(312);
 
 $class3->addRectangle($rec301);

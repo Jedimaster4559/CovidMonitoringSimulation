@@ -9,6 +9,7 @@ $person = $__GET;
 $isTeacher = $__GET;
 
 if ($class == '1') {
+    
     if ($isTeacher == true) {
         $newPerson = new Instructor($person, $rec101);
         $class1->addPerson($newPerson);
