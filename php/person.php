@@ -8,8 +8,9 @@ class Person {
 
     // Member functions
     // Constructor
-    function __construct($mypersonId) {
+    function __construct(int $mypersonId, $myRectangle) {
         $this->personId = $mypersonId;
+        $this->rectangle = $myRectangle;
     }
 
     // Alarm event

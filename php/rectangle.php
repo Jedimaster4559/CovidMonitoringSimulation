@@ -18,10 +18,10 @@ class Rectangle {
     }
 
     // Adds people to a rectangle
-    public function addPerson($num) {
-        $this->people += $num;
+    public function addPerson() {
+        $this->people += 1;
         if ($this->people > 1) {
-            $this->alarm();
+            $this->PeopleAlarm();
         }
     }
 
