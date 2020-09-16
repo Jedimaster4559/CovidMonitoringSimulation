@@ -79,6 +79,7 @@ class Cleaner extends Rectangle {
             else {
                 $this->noLysolUsedAlarm = false;
                 $this->noSanitizerUsedAlarm = false;
+                $this->cleanCount = 0;
             }
         }
 
@@ -89,6 +90,7 @@ class Cleaner extends Rectangle {
             else {
                 $this->noLysolUsedAlarm = false;
                 $this->noSanitizerUsedAlarm = false;
+                $this->cleanCount = 0;
             }
         }
     }
