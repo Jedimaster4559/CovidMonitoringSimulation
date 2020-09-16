@@ -18,6 +18,38 @@
         <!-- Select Classroom and Start/End Class -->
         <p>TODO: add this section</p>
 
+        <div class="classManagementBlock">
+            <table>
+                <tr>
+                    <td>
+                        <div class="startEndClassButton">
+                            <form id="startButton">
+                                <button type="button" onclick="startClass(this.form)">
+                                    Start Classes
+                                </button>
+                            </form>
+                            <form id="endButton" style="visibility: hidden;">
+                                <button type="button" onclick="endClass(this.form)">
+                                    End Classes
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="selectClassDropdown">
+                            <form>
+                                <select id="selectClassroomDropdown" onchange="updateClassroom()">
+                                    <option value="1">Classroom 1</option>
+                                    <option value="2">Classroom 2</option>
+                                    <option value="3">Classroom 3</option>
+                                </select>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
         <!-- Main Display -->
         <div class="primaryDisplayTable">
             <table>
@@ -55,6 +87,7 @@
                                 <div class="eventTitle">Move a Person</div>
                                 <div class="eventField">Person ID: <input type="text" name="movePersonId"></div>
                                 <div class="eventField">Destination Square: <input type="text" name="moveDestinationSquare"></div>
+                                <div class="eventField">Wipe: <input type="checkbox" name="movePersonWipe"></div>
 
                                 <button type="button" onclick="movePerson(this.form)">
                                     Move
@@ -103,6 +136,24 @@
 
                                 <button type="button" onclick="useSanitizer(this.form)">
                                     Use Hand Sanitizer
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+
+                    <!-- Add a new Person -->
+                    <td>
+                        <div class="eventContainer">
+                            <form>
+                                <div class="eventTitle">Add a person</div>
+                                <div class="eventField">Classroom ID: <input type="text" name="addPersonClassroomId"></div>
+                                <div class="eventField">Person ID: <input type="text" name="addPersonPersonId"></div>
+                                <div class="eventField">Is Teacher: <input type="checkbox" name="addPersonIsTeacher"></div>
+
+                                <button type="button" onclick="addPerson(this.form)">
+                                    Add Person
                                 </button>
                             </form>
                         </div>
