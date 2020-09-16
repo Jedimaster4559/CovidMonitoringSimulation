@@ -2,7 +2,7 @@
 
 class Person {
     // Member variables
-    public $mask;
+    //public $mask;
     public $rectangle;
     public $personId;
 
@@ -29,7 +29,7 @@ class Person {
 
 class Instructor extends Person {
     // Member variables 
-    private $shield;
+    public $shield;
 
     // Member functions 
     // Call alarm event

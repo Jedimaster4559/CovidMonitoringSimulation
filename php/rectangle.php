@@ -13,7 +13,7 @@ class Rectangle {
     }
 
     // Triggers an alarm event
-    private function alarm() {
+    public function peopleAlarm() {
         echo "Alarm Event! There are too many people in the area.";
     }
 
@@ -33,12 +33,12 @@ class Rectangle {
 
 class Cleaner extends Rectangle {
     // Member variables 
-    private $useCount = 0;
-    private $type;
+    public $useCount = 0;
+    public $type;
     
     // Member functions
     // Triggers an alarm event
-    private function alarm() {
+    public function alarm() {
         if ($this->type == "Desk") {
             echo "Alarm Event! Person did not use Lysol.";
         }

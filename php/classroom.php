@@ -2,9 +2,9 @@
 
 class Classroom {
     // Member variables
-    private $rectangles = array();
-    private $occupants = array();
-    private $classroomId;
+    public $rectangles = array();
+    public $occupants = array();
+    public $classroomId;
     
     // Member functions
     // Constructor
