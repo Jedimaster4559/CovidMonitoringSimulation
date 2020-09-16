@@ -23,10 +23,10 @@ if ($class == 1) {
     $count = 0;
     while ($count < count($class1->occupants)) {
         $moving = $people[$count];
-        if ($moving->personId === $person->personId) {
-            $moving->move($rectangleMove);
+        if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
             $leaving->leave();
+            $moving->move($rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }
@@ -54,10 +54,10 @@ elseif ($class == 2) {
     $count = 0;
     while ($count < count($class2->occupants)) {
         $moving = $people[$count];
-        if ($moving->personId === $person->personId) {
-            $moving->move($rectangleMove);
+        if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
             $leaving->leave();
+            $moving->move($rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }
@@ -84,10 +84,10 @@ else {
     $count = 0;
     while ($count < count($class3->occupants)) {
         $moving = $people[$count];
-        if ($moving->personId === $person->personId) {
-            $moving->move($rectangleMove);
+        if ($moving->personId === $person) {
             $leavning = $moving->rectangle;
             $leaving->leave();
+            $moving->move($rectangleMove);
             if (($moveHere->type === "desk") && ($wipe == true)) {
                 $moveHere->enterUse();
             }

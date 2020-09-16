@@ -27,6 +27,20 @@ class Rectangle {
             $this->tooManyPeopleAlarm = false;
         }
     }
+
+    public function checkPeople() {
+        if ($this->people > 1) {
+            $this->tooManyPeopleAlarm = true;
+        }
+        else {
+            $this->tooManyPeopleAlarm = false;
+        }
+    }
+
+    public function leave() {
+        $this->people -= 1;
+        $this->checkPeople();
+    }
 }
 
 class Cleaner extends Rectangle {
@@ -75,24 +89,29 @@ class Cleaner extends Rectangle {
         if ($this->type == "entrance") {
             if ($this->cleanCount < 2) {
                 $this->alarm();
+                $this->people -= 1;
             }
             else {
                 $this->noLysolUsedAlarm = false;
                 $this->noSanitizerUsedAlarm = false;
                 $this->cleanCount = 0;
+                $this->people -= 1;
             }
         }
 
         else {
             if ($this->cleanCount < 1) {
                 $this->alarm();
+                $this->people -= 1;
             }
             else {
                 $this->noLysolUsedAlarm = false;
                 $this->noSanitizerUsedAlarm = false;
                 $this->cleanCount = 0;
+                $this->people -= 1;
             }
         }
+        $this->checkPeople();
     }
 }
 
