@@ -2,7 +2,6 @@
 include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
-include_once('start.php');
 
 $class = $_REQUEST["classroomId"];
 $person = $_REQUEST["personId"];

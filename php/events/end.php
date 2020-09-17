@@ -2,12 +2,17 @@
 include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
-include_once('start.php');
 
-// remove all session variables
-session_unset();
+// Clears the text files
+$c1File = fopen("../text/class1.txt", "w");
+fwrite($c1File, "");
+fclose($c1File);
 
-// destroy the session
-session_destroy();
+$c2File = fopen("../text/class2.txt", "w");
+fwrite($c2File, "");
+fclose($c2File);
 
+$c3File = fopen("../text/class3.txt", "w");
+fwrite($c3File, "");
+fclose($c3File);
 ?>
