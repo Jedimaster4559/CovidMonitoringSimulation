@@ -23,7 +23,6 @@ function updatePersonState(formData) {
     requestContent = requestContent+'personId='+formData.updatePersonId.value;
     requestContent = requestContent+'&mask='+formData.updateWearingMask.checked;
     requestContent = requestContent+'&faceshield='+formData.updateWearingFaceshield.checked;
-    request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
         if (request.readyState == 4);
@@ -67,6 +66,7 @@ function addPerson(formData) {
     requestContent = requestContent+'classroomId='+formData.addPersonClassroomId.value;
     requestContent = requestContent+'&personId='+formData.addPersonPersonId.value;
     requestContent = requestContent+'&isTeacher='+formData.addPersonIsTeacher.checked;
+    console.log(requestContent);
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
