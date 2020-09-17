@@ -38,10 +38,17 @@ if ($class == 1) {
             // Move to new Tile
             $rec->leave();
             $class1->rectangles[($rec->destinationId)-1] = $rec;
-            $newRec = cast($class1->rectangles[$destination-1], "Cleaner");
+
+            // Cast the new rectangle as either a Cleaner or Rectangle
+            if ($class1->rectangles[$destination-1]->type == "Cleaner") {
+                $newRec = cast($class1->rectangles[$destination-1], "Cleaner");
+            }
+            else {
+                $newRec = cast($class1->rectangles[$destination-1], "Rectangle");
+            }
             $newRec->addPerson();
             $class1->rectangles[$destination-1] = $newRec;
-            $personFromFile->rectangle = $newRec;
+            $personFromFile->move($rec);
             $class1->occupants[$c1Count] = $personFromFile;
         
             // Write Data

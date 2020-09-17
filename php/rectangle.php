@@ -45,7 +45,7 @@ class Rectangle {
 
 class Cleaner extends Rectangle {
     // Member variables 
-    public $cleanCount = 0;
+    public $cleanCount;
     public $noSanitizerUsedAlarm = false;
     public $noLysolUsedAlarm = false;
     
@@ -53,6 +53,7 @@ class Cleaner extends Rectangle {
     function __construct(int $mydestinationId, $mytype) {
         $this->destinationId = $mydestinationId;
         $this->type = $mytype;
+        $this->cleanCount = 0;
     }
 
     // Triggers an alarm event
@@ -90,7 +91,6 @@ class Cleaner extends Rectangle {
             if ($this->cleanCount < 2) {
                 $this->alarm();
                 $this->people -= 1;
-                $this->cleanCount = 0;
             }
             else {
                 $this->noLysolUsedAlarm = false;
@@ -101,16 +101,17 @@ class Cleaner extends Rectangle {
         }
 
         else {
-            if ($this->cleanCount < 1) {
-                $this->alarm();
-                $this->people -= 1;
-            }
-            else {
-                $this->noLysolUsedAlarm = false;
-                $this->noSanitizerUsedAlarm = false;
-                $this->cleanCount = 0;
-                $this->people -= 1;
-            }
+            echo $this->cleanCount;
+            // if ($this->cleanCount < 1) {
+            //     $this->alarm();
+            //     $this->people -= 1;
+            // }
+            // else {
+            //     $this->noLysolUsedAlarm = false;
+            //     $this->noSanitizerUsedAlarm = false;
+            //     $this->cleanCount = 0;
+            //     $this->people -= 1;
+            // }
         }
         $this->checkPeople();
     }
