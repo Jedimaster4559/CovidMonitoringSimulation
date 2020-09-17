@@ -7,7 +7,6 @@ function movePerson(formData) {
     requestContent = requestContent+'classroomId='+getSelectedClassroom();
     requestContent = requestContent+'&personId='+formData.movePersonId.value;
     requestContent = requestContent+'&destinationId='+formData.moveDestinationSquare.value;
-    requestContent = requestContent+'&wipe='+formData.movePersonWipe.checked;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
@@ -293,7 +292,7 @@ function updateDeskGUI(tileId, tile){
 // Handles alerts for desks
 function handleDeskAlerts(tileId, tile){
     if(tile.noLysolUsedAlarm){
-        reportError(tileId, "Someone Left the tile without using the Hand Sanitizer");
+        reportError(tileId, "Someone Left the tile without using the Lysol Twice");
     }
     if(tile.tooManyPeopleAlarm){
         reportError(tileId, "There are too many people in this tile");
