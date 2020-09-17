@@ -23,34 +23,34 @@ if ($class == '1') {
     while ($c1Count < $numPeople) {
         $personFromFile = cast($class1->occupants[$c1Count], "Person");
         if ($person == $personFromFile->personId) {
-            if ($mask == false) {
-                $myPerson->wearMaskIncorrectly();
-                $class1->occupants[$c1Count-1] = $myPerson;
+            if ($mask == "false") {
+                $personFromFile->wearMaskIncorrectly();
+                $class1->occupants[$c1Count-1] = $personFromFile;
                 $jsonClass = json_encode($class1);
                 $c1File = fopen('../text/class1.txt', 'w');
                 fwrite($c1File, $jsonClass);
                 fclose($c1File);
             }
-            elseif ($mask == true) {
-                $myPerson->wearMaskCorrectly();
-                $class1->occupants[$c1Count-1] = $myPerson;
+            elseif ($mask == "true") {
+                $personFromFile->wearMaskCorrectly();
+                $class1->occupants[$c1Count-1] = $personFromFile;
                 $jsonClass = json_encode($class1);
                 $c1File = fopen('../text/class1.txt', 'w');
                 fwrite($c1File, $jsonClass);
                 fclose($c1File);
             }
-            if ($myPerson->status == "teacher") {
-                if ($faceshield == false) {
-                    $myPerson->wearFaceShieldIncorrectly();
-                    $class1->occupants[$c1Count-1] = $myPerson;
+            if ($personFromFile->status == "teacher") {
+                if ($faceshield == "false") {
+                    $personFromFile->wearFaceShieldIncorrectly();
+                    $class1->occupants[$c1Count-1] = $personFromFile;
                     $jsonClass = json_encode($class1);
                     $c1File = fopen('../text/class1.txt', 'w');
                     fwrite($c1File, $jsonClass);
                     fclose($c1File);
                 }
-                elseif ($faceshield == true) {
-                    $myPerson->wearCorrectly();
-                    $class1->occupants[$c1Count-1] = $myPerson;
+                elseif ($faceshield == "true") {
+                    $personFromFile->wearCorrectly();
+                    $class1->occupants[$c1Count-1] = $personFromFile;
                     $jsonClass = json_encode($class1);
                     $c1File = fopen('../text/class1.txt', 'w');
                     fwrite($c1File, $jsonClass);
@@ -71,34 +71,34 @@ elseif ($class == '2') {
     while ($c2Count < $numPeople) {
         $personFromFile = cast($class2->occupants[$c2Count], "Person");
         if ($person == $personFromFile->personId) {
-            if ($mask == false) {
-                $myPerson->wearMaskIncorrectly();
-                $class2->occupants[$c2Count-1] = $myPerson;
+            if ($mask == "false") {
+                $personFromFile->wearMaskIncorrectly();
+                $class2->occupants[$c2Count-1] = $personFromFile;
                 $jsonClass = json_encode($class2);
                 $c2File = fopen('../text/class2.txt', 'w');
                 fwrite($c2File, $jsonClass);
                 fclose($c2File);
             }
-            elseif ($mask == true) {
-                $myPerson->wearMaskCorrectly();
-                $class2->occupants[$c2Count-1] = $myPerson;
+            elseif ($mask == "true") {
+                $personFromFile->wearMaskCorrectly();
+                $class2->occupants[$c2Count-1] = $personFromFile;
                 $jsonClass = json_encode($class2);
                 $c2File = fopen('../text/class2.txt', 'w');
                 fwrite($c2File, $jsonClass);
                 fclose($c2File);
             }
-            if ($myPerson->status == "teacher") {
-                if ($faceshield == false) {
-                    $myPerson->wearFaceShieldIncorrectly();
-                    $class2->occupants[$c2Count-1] = $myPerson;
+            if ($personFromFile->status == "teacher") {
+                if ($faceshield == "false") {
+                    $personFromFile->wearFaceShieldIncorrectly();
+                    $class2->occupants[$c2Count-1] = $personFromFile;
                     $jsonClass = json_encode($class2);
                     $c2File = fopen('../text/class2.txt', 'w');
                     fwrite($c2File, $jsonClass);
                     fclose($c2File);
                 }
-                elseif ($faceshield == true) {
-                    $myPerson->wearCorrectly();
-                    $class2->occupants[$c2Count-1] = $myPerson;
+                elseif ($faceshield == "true") {
+                    $personFromFile->wearCorrectly();
+                    $class2->occupants[$c2Count-1] = $personFromFile;
                     $jsonClass = json_encode($class2);
                     $c2File = fopen('../text/class2.txt', 'w');
                     fwrite($c2File, $jsonClass);
@@ -119,34 +119,34 @@ else {
     while ($c3Count < $numPeople) {
         $personFromFile = cast($class3->occupants[$c3Count], "Person");
         if ($person == $personFromFile->personId) {
-            if ($mask == false) {
-                $myPerson->wearMaskIncorrectly();
-                $class3->occupants[$c3Count-1] = $myPerson;
+            if ($mask == "false") {
+                $personFromFile->wearMaskIncorrectly();
+                $class3->occupants[$c3Count-1] = $personFromFile;
                 $jsonClass = json_encode($class3);
                 $c3File = fopen('../text/class3.txt', 'w');
                 fwrite($c3File, $jsonClass);
                 fclose($c3File);
             }
-            elseif ($mask == true) {
-                $myPerson->wearMaskCorrectly();
-                $class3->occupants[$c3Count-1] = $myPerson;
+            elseif ($mask == "true") {
+                $personFromFile->wearMaskCorrectly();
+                $class3->occupants[$c3Count-1] = $personFromFile;
                 $jsonClass = json_encode($class3);
                 $c3File = fopen('../text/class3.txt', 'w');
                 fwrite($c3File, $jsonClass);
                 fclose($c3File);
             }
-            if ($myPerson->status == "teacher") {
-                if ($faceshield == false) {
-                    $myPerson->wearFaceShieldIncorrectly();
-                    $class3->occupants[$c3Count-1] = $myPerson;
+            if ($personFromFile->status == "teacher") {
+                if ($faceshield == "false") {
+                    $personFromFile->wearFaceShieldIncorrectly();
+                    $class3->occupants[$c3Count-1] = $personFromFile;
                     $jsonClass = json_encode($class3);
                     $c3File = fopen('../text/class3.txt', 'w');
                     fwrite($c3File, $jsonClass);
                     fclose($c3File);
                 }
-                elseif ($faceshield == true) {
-                    $myPerson->wearCorrectly();
-                    $class3->occupants[$c3Count-1] = $myPerson;
+                elseif ($faceshield == "true") {
+                    $personFromFile->wearCorrectly();
+                    $class3->occupants[$c3Count-1] = $personFromFile;
                     $jsonClass = json_encode($class3);
                     $c3File = fopen('../text/class3.txt', 'w');
                     fwrite($c3File, $jsonClass);

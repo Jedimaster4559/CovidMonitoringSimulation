@@ -26,6 +26,7 @@ function updatePersonState(formData) {
     requestContent = requestContent+'&personId='+formData.updatePersonId.value;
     requestContent = requestContent+'&mask='+formData.updateWearingMask.checked;
     requestContent = requestContent+'&faceshield='+formData.updateWearingFaceshield.checked;
+    request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
@@ -206,15 +207,15 @@ function processTiles(tiles){
 }
 
 function processPeople(people){
-    people.forEach(person => {
-        if(person.status == "student"){
+    for (person in people) {
+        if(person.status === "student"){
             addStudentToGUI(person);
             handleStudentAlerts(person);
         } else {
             addTeacherToGUI(person);
             handleTeacherAlerts(person);
         }
-    });
+    }
 }
 
 // Adds a student to the gui display
