@@ -101,17 +101,16 @@ class Cleaner extends Rectangle {
         }
 
         else {
-            echo $this->cleanCount;
-            // if ($this->cleanCount < 1) {
-            //     $this->alarm();
-            //     $this->people -= 1;
-            // }
-            // else {
-            //     $this->noLysolUsedAlarm = false;
-            //     $this->noSanitizerUsedAlarm = false;
-            //     $this->cleanCount = 0;
-            //     $this->people -= 1;
-            // }
+            if ($this->cleanCount < 1) {
+                $this->alarm();
+                $this->people -= 1;
+            }
+            else {
+                $this->noLysolUsedAlarm = false;
+                $this->noSanitizerUsedAlarm = false;
+                $this->cleanCount = 0;
+                $this->people -= 1;
+            }
         }
         $this->checkPeople();
     }
