@@ -37,8 +37,12 @@ if ($class == 1) {
 
             // Move to new Tile
             $rec->leave();
-            $newRec = $class1->rectangles[$destination-1];
+            $class1->rectangles[($rec->destinationId)-1] = $rec;
+            $newRec = cast($class1->rectangles[$destination-1], "Cleaner");
             $newRec->addPerson();
+            $class1->rectangles[$destination-1] = $newRec;
+            $personFromFile->rectangle = $newRec;
+            $class1->occupants[$c1Count] = $personFromFile;
         
             // Write Data
             $jsonClass = json_encode($class1);
@@ -51,7 +55,6 @@ if ($class == 1) {
     }
 
 }
-
 elseif ($class == 2) {
     // Setup data to use
     $c2Text = file_get_contents('../text/class2.txt');
@@ -86,6 +89,7 @@ elseif ($class == 2) {
             echo $jsonClass;
         }
         $c2Count++;
+    }
 }
 else {
     // Setup data to use
@@ -121,6 +125,6 @@ else {
             echo $jsonClass;
         }
     $c3Count++;
+    }
 }
-
 ?>

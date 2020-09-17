@@ -14,6 +14,7 @@ function cast($instance, $className) {
 
 if ($class == '1') {
     $c1Text = file_get_contents('../text/class1.txt');
+    echo $c1Text;
     $class1 = cast(json_decode($c1Text), "Classroom");
     $numPeople = count($class1->occupants);
     $c1Count = 0;
@@ -22,7 +23,13 @@ if ($class == '1') {
         $personFromFile = cast($class1->occupants[$c1Count], "Person");
         if ($person == $personFromFile->personId) {
             $rec = cast($personFromFile->rectangle, "Cleaner");
+            echo json_encode($rec);
             $rec->clean();
+            echo json_encode($rec);
+
+
+
+
             $personFromFile->rectangle = $rec;
             $recLoc = $rec->destinationId;
             $class1->rectangles[$recLoc-1] = $rec;
@@ -30,7 +37,7 @@ if ($class == '1') {
             $c1File = fopen('../text/class1.txt', 'w');
             fwrite($c1File, $jsonClass);
             fclose($c1File);
-            echo $jsonClass;
+            // echo $jsonClass;
         }
         $c1Count++;
     }

@@ -233,7 +233,9 @@ function addStudentToGUI(student){
     // Display and update content
     let updatedContent = previousContent + personHTML;
     document.getElementById(tileId+"-people").innerHTML = updatedContent;
-    document.getElementById(student.personId.toString() + "-student-mask").checked = !student.maskErrorAlarm;
+    // document.getElementById(student.personId.toString() + "-student-mask").checked = !student.maskErrorAlarm;
+    document.getElementById(student.personId + "-student-mask").checked = true;
+
 }
 
 // Adds a teacher to the gui display
