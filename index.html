@@ -16,8 +16,6 @@
         </div>
 
         <!-- Select Classroom and Start/End Class -->
-        <p>TODO: add this section</p>
-
         <div class="classManagementBlock">
             <table>
                 <tr>
@@ -54,24 +52,67 @@
         <div class="primaryDisplayTable">
             <table>
                 <tr>
-                    <td>Room Entrance: Hand Sanatizer Station</td>
-                    <td rowspan="3">Aisleway</td>
-                    <td>Instructor Rectangle Desk & Lysol</td>
-                    <td colspan="2">Student Question Rectangle</td>
+                    <td id="001-tile">
+                        <b>Room Entrance: Hand Sanitizer Station</b><br>
+                        TileID: 001<br>
+                        Hand Sanitizer User: <input type="checkbox" id="001-sanitizer-box" checked disabled>
+                    </td>
+                    <td rowspan="3" id="002-tile">
+                        <b>Aisleway</b><br>
+                        TileID: 002
+                    </td>
+                    <td id="003-tile">
+                        <b>Instructor Rectangle Desk & Lysol</b><br>
+                        TileID: 003<br>
+                        # Times Lysol Used: <div id="003-lysol-number">0</div>
+                    </td>
+                    <td colspan="2" id="004-tile">
+                        <b>Student Question Rectangle</b><br>
+                        TileID: 004
+                    </td>
                 </tr>
                 <tr>
-                    <td>Student Rectangle #1 Desk & Lysol</td>
-                    <td>Student Rectangle #2 Desk & Lysol</td>
-                    <td rowspan="2">Aisleway</td>
-                    <td>Student Rectangle #3 Desk & Lysol</td>
+                    <td id="005-tile">
+                        <b>Student Rectangle #1 Desk & Lysol</b><br>
+                        TileID: 005<br>
+                        # Times Lysol Used: <div id="005-lysol-number">0</div>
+                    </td>
+                    <td id="006-tile">
+                        <b>Student Rectangle #2 Desk & Lysol</b><br>
+                        TileID: 006<br>
+                        # Times Lysol Used: <div id="006-lysol-number">0</div>
+                    </td>
+                    <td rowspan="2" id="007-tile">
+                        <b>Aisleway</b><br>
+                        TileID: 007
+                    </td>
+                    <td id="008-tile">
+                        <b>Student Rectangle #3 Desk & Lysol</b><br>
+                        TileID: 008<br>
+                        # Times Lysol Used: <div id="008-lysol-number">0</div>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Aisleway</td>
-                    <td>Student Rectangle #5 Desk & Lysol</td>
-                    <td>Student Rectangle #4 Desk & Lysol</td>
+                    <td id="009-tile">
+                        <b>Aisleway</b><br>
+                        TileID: 009
+                    </td>
+                    <td id="010-tile">
+                        <b>Student Rectangle #4 Desk & Lysol</b><br>
+                        TileID: 010
+                        # Times Lysol Used: <div id="010-lysol-number">0</div>
+                    </td>
+                    <td id="011-tile">
+                        <b>Student Rectangle #5 Desk & Lysol</b><br>
+                        TileID: 011
+                        # Times Lysol Used: <div id="011-lysol-number">0</div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="5">Aisleway</td>
+                    <td colspan="5" id="012-tile">
+                        <b>Aisleway</b><br>
+                        TileID: 012
+                    </td>
                 </tr>
             </table>
         </div>
