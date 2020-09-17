@@ -2,6 +2,7 @@
 include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
+include_once('start.php');
 
 $class1 = new Classroom(1);
 

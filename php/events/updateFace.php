@@ -5,8 +5,8 @@ include_once('../rectangle.php');
 include_once('start.php');
 
 $person = $_REQUEST["personId"];
-$mask = $__GET;
-$faceshield = $__GET;
+$mask = $_REQUEST["mask"];
+$faceshield = $_REQUEST["faceshield"];
 $personClass;
 $continue = true;
 

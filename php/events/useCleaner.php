@@ -4,12 +4,15 @@ include_once('../person.php');
 include_once('../rectangle.php');
 include_once('start.php');
 
-$person = $__GET;
+$person = $_REQUEST["personId"];
 $personClass;
 $continue = true;
 
 $c1People = $class1->occupants;
 $c1Count = 0;
+echo $person;
+echo count($class1->occupants);
+echo count($class1->rectangles);
 while ($c1Count < count($class1->occupants)) {
     $myPerson = $class1->occupants[$c1Count];
     if ($myPerson->personId == $person) {
@@ -58,8 +61,8 @@ else {
             }
             $c3Count++;
         }
-        $jsonClass = json_encode($personClass);
-        echo $jsonClass;
+        // $jsonClass = json_encode($personClass);
+        // echo $jsonClass;
     }
 }
 
