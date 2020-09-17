@@ -1,5 +1,6 @@
 var eventsDirectory = 'php/events/';
 
+// See eventRequest.md for documentation
 function movePerson(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'movePerson.php?';
@@ -17,10 +18,12 @@ function movePerson(formData) {
     request.send();
 }
 
+// See eventRequest.md for documentation
 function updatePersonState(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'updateFace.php?';
-    requestContent = requestContent+'personId='+formData.updatePersonId.value;
+    requestContent = requestContent+'classroomId='+getSelectedClassroom();
+    requestContent = requestContent+'&personId='+formData.updatePersonId.value;
     requestContent = requestContent+'&mask='+formData.updateWearingMask.checked;
     requestContent = requestContent+'&faceshield='+formData.updateWearingFaceshield.checked;
 
@@ -32,11 +35,12 @@ function updatePersonState(formData) {
     request.send();
 }
 
+// See eventRequest.md for documentation
 function useLysol(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'useCleaner.php?';
-    requestContent = requestContent+'classroomId='+formData.addPersonClassroomId.value;
-    requestContent = requestContent+'personId='+formData.useLysolPersonId.value;
+    requestContent = requestContent+'classroomId='+getSelectedClassroom();
+    requestContent = requestContent+'&personId='+formData.useLysolPersonId.value;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
@@ -47,10 +51,12 @@ function useLysol(formData) {
     request.send();
 }
 
+// See eventRequest.md for documentation
 function useSanitizer(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'useCleaner.php?';
-    requestContent = requestContent+'personId='+formData.useSanitizerPersonId.value;
+    requestContent = requestContent+'classroomId='+getSelectedClassroom();
+    requestContent = requestContent+'&personId='+formData.useSanitizerPersonId.value;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
@@ -61,6 +67,7 @@ function useSanitizer(formData) {
     request.send();
 }
 
+// See eventRequest.md for documentation
 function addPerson(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'addPerson.php?';
@@ -78,6 +85,7 @@ function addPerson(formData) {
     request.send();
 }
 
+// See eventRequest.md for documentation
 function startClass(formData) {
     document.getElementById("startButton").style.visibility = "hidden";
 
@@ -95,6 +103,7 @@ function startClass(formData) {
     document.getElementById("endButton").style.visibility = "visible";
 }
 
+// See eventRequest.md for documentation
 function endClass(formData) {
     document.getElementById("endButton").style.visibility = "hidden";
 
@@ -113,6 +122,7 @@ function endClass(formData) {
     
 }
 
+// See eventRequest.md for documentation
 function updateClassroom() {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'switchRoom.php?';
@@ -128,11 +138,13 @@ function updateClassroom() {
     request.send();
 }
 
+// Gets the classroom that should be currently displayed
 function getSelectedClassroom() {
     var e = document.getElementById("selectClassroomDropdown")
     return e.options[e.selectedIndex].value;
 }
 
+// Handles the responses from the server
 function processResponse(){
     if(request.status == 200){
         // Debug log the response
@@ -147,6 +159,9 @@ function processResponse(){
 
         // Handle the physical locations in the room
         processTiles(classroom.rectangles);
+
+        // Handle the people in the room
+        processPeople(classroom.occupants);
         
 
     } else {
@@ -190,11 +205,82 @@ function processTiles(tiles){
     handleAislewayAlerts("0012", tile12);
 }
 
+function processPeople(people){
+    people.forEach(person => {
+        if(person.status == "student"){
+            addStudentToGUI(person);
+            handleStudentAlerts(person);
+        } else {
+            addTeacherToGUI(person);
+            handleTeacherAlerts(person);
+        }
+    });
+}
+
+// Adds a student to the gui display
+function addStudentToGUI(student){
+    let tileId = student.rectangle.destinationId.toString();
+    let previousContent = document.getElementById(tileId + "-people").innerHTML;
+
+    // Build HTML for Student Detail Display
+    let personHTML = "<div class=\"student-detail\" id=\"";
+    personHTML = personHTML + student.personId + "-student-detail\">";
+    personHTML = personHTML + "Student #" + student.personId +"<br>";
+    personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
+    personHTML = personHTML + "id=\"" + student.personId + "-student-mask\" disabled>";
+    personHTML = personHTML + "</div>";
+
+    // Display and update content
+    let updatedContent = previousContent + personHTML;
+    document.getElementById(tileId+"-people").innerHTML = updatedContent;
+    document.getElementById(student.personId.toString() + "-student-mask").checked = !student.maskErrorAlarm;
+}
+
+// Adds a teacher to the gui display
+function addTeacherToGUI(teacher){
+    let tileId = teacher.rectangle.destinationId.toString();
+    let previousContent = document.getElementById(tileId + "-people").innerHTML;
+
+    // Build HTML for Student Detail Display
+    let personHTML = "<div class=\"teacher-detail\" id=\"";
+    personHTML = personHTML + teacher.personId + "-teacher-detail\">";
+    personHTML = personHTML + "Teacher #" + teacher.personId +"<br>";
+    personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-mask\" disabled><br>";
+    personHTML = personHTML + "Wearing Face Shield: <input type=\"checkbox\" ";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-shield\" disabled><br>";
+    personHTML = personHTML + "</div>";
+
+    // Display and update content
+    let updatedContent = previousContent + personHTML;
+    document.getElementById(tileId+"-people").innerHTML = updatedContent;
+    document.getElementById(teacher.personId.toString() + "-teacher-mask").checked = !teacher.maskErrorAlarm;
+    document.getElementById(teacher.personId.toString() + "-teacher-shield").checked = !teacher.shieldErrorAlarm;
+}
+
+// Alarms for when students aren't wearing their facemask
+function handleStudentAlerts(student){
+    if(student.maskErrorAlarm){
+        reportStudentError(student.personId.toString(), "A Student is not wearing their face mask");
+    }
+}
+
+// Alarms for when teachers arn't wearing the faceshield
+function handleTeacherAlerts(teacher){
+    if(teacher.maskErrorAlarm){
+        reportTeacherError(teacher.personId.toString(), "A Teacher is not wearing their face mask");
+    }
+    if(teacher.shieldErrorAlarm){
+        reportTeacherError(student.personId.toString(), "A Teacher is not wearing their face shield");
+    }
+}
+
 // Updates the GUI for desk tiles
 function updateDeskGUI(tileId, tile){
     document.getElementById(tileId+"-lysol-number").innerHTML = tile.cleanCount;
 }
 
+// Handles alerts for desks
 function handleDeskAlerts(tileId, tile){
     if(tile.noLysolUsedAlarm){
         reportError(tileId, "Someone Left the tile without using the Hand Sanitizer");
@@ -230,6 +316,18 @@ function handleAislewayAlerts(tileId, tile){
 // Clears the state of the GUI
 function clearGUI(){
     document.getElementById("001-sanitizer-box").checked = false;
+    document.getElementById("001-people").innerHTML = "";
+    document.getElementById("002-people").innerHTML = "";
+    document.getElementById("003-people").innerHTML = "";
+    document.getElementById("004-people").innerHTML = "";
+    document.getElementById("005-people").innerHTML = "";
+    document.getElementById("006-people").innerHTML = "";
+    document.getElementById("007-people").innerHTML = "";
+    document.getElementById("008-people").innerHTML = "";
+    document.getElementById("009-people").innerHTML = "";
+    document.getElementById("010-people").innerHTML = "";
+    document.getElementById("011-people").innerHTML = "";
+    document.getElementById("012-people").innerHTML = "";
 }
 
 // Clears the Styling on all tiles so new alerts can
@@ -261,6 +359,7 @@ function clearAlertStyling(){
     document.getElementById("012-tile").style.color = "#000000";
 }
 
+// Displays an error for a tile
 function reportError(tileId, alertText){
     document.getElementById(tileId + "-tile").style.backgroundColor = "#FF0000";
     document.getElementById(tileId + "-tile").style.color = "#FFFFFF";
@@ -268,6 +367,22 @@ function reportError(tileId, alertText){
     // alert("Alert!\nTileID: " + tileId + "\nClassroom: " + request.requestContent.classroomId + "\n" + alertText);
     alert("Alert!\nTileID: " + tileId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
 
+}
+
+// Displays an error for a student
+function reportStudentError(personId, alertText){
+    document.getElementById(personId + "-student-detail").style.backgroundColor = "#FF0000";
+    document.getElementById(personId + "-student-detail").style.color = "#FFFFFF";
+
+    alert("Alert!\nStudentID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+}
+
+// Displays an error for a teacher
+function reportTeacherError(personId, alertText){
+    document.getElementById(personId + "-teacher-detail").style.backgroundColor = "#FF0000";
+    document.getElementById(personId + "-teacher-detail").style.color = "#FFFFFF";
+
+    alert("Alert!\nTeacherID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
 }
 
 // Function to test that things are working properly
