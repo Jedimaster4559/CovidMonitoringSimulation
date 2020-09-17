@@ -8,97 +8,119 @@ $person = $_REQUEST["personId"];
 $destination = $_REQUEST["destinationId"];
 $wipe = $_REQUEST["wipe"];
 
+// Fixes a PHP serialization issue
+// https://tommcfarlin.com/cast-a-php-standard-class-to-a-specific-type/
+function cast($instance, $className) {
+    return unserialize(sprintf('O:%d:"%s"%s', \strlen($className), $className, strstr(strstr(serialize($instance), '"'), ':')));    
+}
+
 if ($class == 1) {
-    $people = $class1->occupants;
-    $rectangles = $class1->rectangles;
-    $count = 0;
-    while ($count < count($class1->rectangles)) {
-        $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId === $destination) {
-            $rectangleMove = $moveHere;
-        }
-        $count++;
-    }
-    $count = 0;
-    while ($count < count($class1->occupants)) {
-        $moving = $people[$count];
-        if ($moving->personId === $person) {
-            $leavning = $moving->rectangle;
-            $moving->move($leaving, $rectangleMove);
-            if (($moveHere->type === "desk") && ($wipe == true)) {
-                $moveHere->enterUse();
+    // Setup data to use
+    $c1Text = file_get_contents('../text/class1.txt');
+    $class1 = cast(json_decode($c1Text), "Classroom");
+
+    // Setup counters
+    $numPeople = count($class1->occupants);
+    $c1Count = 0;
+
+    // For loop searches for the right person based off id
+    while ($c1Count < $numPeople) {
+        $personFromFile = cast($class1->occupants[$c1Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
+
+            // if working out of an aisle, we want to use regular
+            // rectangle and not cleaner
+            if($rec->type == "aisle"){
+                $rec = cast($personFromFile->rectangle, "Rectangle");
             }
-            elseif (($moveHere->type === "desk") && ($wipe == false)) {
-                $moveHere->enterNoUse();
-            }
+
+            // Move to new Tile
+            $rec->leave();
+            $newRec = $class1->rectangles[$destination-1];
+            $newRec->addPerson();
+        
+            // Write Data
             $jsonClass = json_encode($class1);
+            $c1File = fopen('../text/class1.txt', 'w');
+            fwrite($c1File, $jsonClass);
+            fclose($c1File);
             echo $jsonClass;
         }
-        $count++;
+        $c1Count++;
     }
+
 }
 
 elseif ($class == 2) {
-    $people = $class2->occupants;
-    $rectangles = $class2->rectangles;
-    $count = 0;
-    while ($count < count($class2->rectangles)) {
-        $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId === $destination) {
-            $rectangleMove = $moveHere;
-        }
-        $count++;
-    }
-    $count = 0;
-    while ($count < count($class2->occupants)) {
-        $moving = $people[$count];
-        if ($moving->personId === $person) {
-            $leavning = $moving->rectangle;
-            $moving->move($leaving, $rectangleMove);
-            if (($moveHere->type === "desk") && ($wipe == true)) {
-                $moveHere->enterUse();
+    // Setup data to use
+    $c2Text = file_get_contents('../text/class2.txt');
+    $class2 = cast(json_decode($c2Text), "Classroom");
+
+    // Setup counters
+    $numPeople = count($class2->occupants);
+    $c2Count = 0;
+
+    // For loop searches for the right person based off id
+    while ($c2Count < $numPeople) {
+        $personFromFile = cast($class2->occupants[$c2Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
+
+            // if working out of an aisle, we want to use regular
+            // rectangle and not cleaner
+            if($rec->type == "aisle"){
+                $rec = cast($personFromFile->rectangle, "Rectangle");
             }
-            elseif (($moveHere->type === "desk") && ($wipe == false)) {
-                $moveHere->enterNoUse();
-            }
+
+            // Move to new Tile
+            $rec->leave();
+            $newRec = $class2->rectangles[$destination-1];
+            $newRec->addPerson();
+        
+            // Write Data
             $jsonClass = json_encode($class2);
+            $c2File = fopen('../text/class2.txt', 'w');
+            fwrite($c2File, $jsonClass);
+            fclose($c2File);
             echo $jsonClass;
         }
-        $count++;
-    }
+        $c2Count++;
 }
 else {
-    $people = $class3->occupants;
-    $rectangles = $class3->rectangles;
-    $count = 0;
-    while ($count < count($class3->rectangles)) {
-        $moveHere = $rectangles[$count];
-        if ($moveHere->destinationId === $destination) {
-            $rectangleMove = $moveHere;
-        }
-        $count++;
-    }
-    $count = 0;
-    while ($count < count($class3->occupants)) {
-        $moving = $people[$count];
-        if ($moving->personId === $person) {
-            $leavning = $moving->rectangle;
-            $moving->move($leave, $rectangleMove);
-            if (($moveHere->type === "desk") && ($wipe == true)) {
-                $moveHere->enterUse();
+    // Setup data to use
+    $c3Text = file_get_contents('../text/class3.txt');
+    $class3 = cast(json_decode($c1Text), "Classroom");
+
+    // Setup counters
+    $numPeople = count($class3->occupants);
+    $c3Count = 0;
+
+    // For loop searches for the right person based off id
+    while ($c3Count < $numPeople) {
+        $personFromFile = cast($class3->occupants[$c1Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
+
+            // if working out of an aisle, we want to use regular
+            // rectangle and not cleaner
+            if($rec->type == "aisle"){
+                $rec = cast($personFromFile->rectangle, "Rectangle");
             }
-            elseif (($moveHere->type === "desk") && ($wipe == false)) {
-                $moveHere->enterNoUse();
-            }
+
+            // Move to new Tile
+            $rec->leave();
+            $newRec = $class3->rectangles[$destination-1];
+            $newRec->addPerson();
+        
+            // Write Data
             $jsonClass = json_encode($class3);
+            $c1File = fopen('../text/class3.txt', 'w');
+            fwrite($c3File, $jsonClass);
+            fclose($c3File);
             echo $jsonClass;
         }
-        $count++;
-    }
+    $c3Count++;
 }
-
-fclose($c1File);
-fclose($c2File);
-fclose($c3File);
 
 ?>
