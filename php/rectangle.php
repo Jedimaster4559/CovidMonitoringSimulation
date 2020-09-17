@@ -66,17 +66,6 @@ class Cleaner extends Rectangle {
         }
     }
 
-    // The person enters the rectangle and does not use the cleaner
-    public function enterNoUse() {
-        $this->alarm();
-    }
-
-    // The person uses the cleaner
-    public function enterUse() {
-        $this->noLysolUsedAlarm = false;
-        $this->noSanitizerUsedAlarm = false;
-    }
-
     // The person uses the cleaner
     public function clean() {
         $this->cleanCount += 1;

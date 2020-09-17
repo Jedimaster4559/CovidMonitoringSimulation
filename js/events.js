@@ -7,7 +7,6 @@ function movePerson(formData) {
     requestContent = requestContent+'classroomId='+getSelectedClassroom();
     requestContent = requestContent+'&personId='+formData.movePersonId.value;
     requestContent = requestContent+'&destinationId='+formData.moveDestinationSquare.value;
-    requestContent = requestContent+'&wipe='+formData.movePersonWipe.checked;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {

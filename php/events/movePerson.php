@@ -6,7 +6,6 @@ include_once('../rectangle.php');
 $class = $_REQUEST["classroomId"];
 $person = $_REQUEST["personId"];
 $destination = $_REQUEST["destinationId"];
-$wipe = $_REQUEST["wipe"];
 
 // Fixes a PHP serialization issue
 // https://tommcfarlin.com/cast-a-php-standard-class-to-a-specific-type/
