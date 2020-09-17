@@ -207,15 +207,16 @@ function processTiles(tiles){
 }
 
 function processPeople(people){
-    for (person in people) {
-        if(person.status === "student"){
+    console.log(people);
+    people.forEach(person => {
+        if(person.status == "student"){
             addStudentToGUI(person);
             handleStudentAlerts(person);
         } else {
             addTeacherToGUI(person);
             handleTeacherAlerts(person);
         }
-    }
+    });
 }
 
 // Adds a student to the gui display
@@ -280,7 +281,7 @@ function handleTeacherAlerts(teacher){
         reportTeacherError(teacher.personId.toString(), "A Teacher is not wearing their face mask");
     }
     if(teacher.shieldErrorAlarm){
-        reportTeacherError(student.personId.toString(), "A Teacher is not wearing their face shield");
+        reportTeacherError(teacher.personId.toString(), "A Teacher is not wearing their face shield");
     }
 }
 
@@ -383,7 +384,7 @@ function reportStudentError(personId, alertText){
     document.getElementById(personId + "-student-detail").style.backgroundColor = "#FF0000";
     document.getElementById(personId + "-student-detail").style.color = "#FFFFFF";
 
-    alert("Alert!\nStudentID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+    alert("Alert!\nStudentID: " + personId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
 }
 
 // Displays an error for a teacher
@@ -391,7 +392,7 @@ function reportTeacherError(personId, alertText){
     document.getElementById(personId + "-teacher-detail").style.backgroundColor = "#FF0000";
     document.getElementById(personId + "-teacher-detail").style.color = "#FFFFFF";
 
-    alert("Alert!\nTeacherID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+    alert("Alert!\nTeacherID: " + personId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
 }
 
 // Function to test that things are working properly
