@@ -67,19 +67,20 @@ if ($class == '1') {
     $c1Count = 0;
 
     while ($c1Count < $numPeople) {
-        if ($person == (string)$class1->occupants[$c1Count]) {
-            $person = cast($class1->occupants[$c1Count], "Person");
-            $rec = cast($person->rectangle, "Rectangle");
+        $personFromFile = cast($class1->occupants[$c1Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
             $rec->clean();
-            $person->rectangle = $rec;
+            $personFromFile->rectangle = $rec;
             $recLoc = $rec->destinationId;
-            $classRec = $class1->rectangle[$recLoc];
-            $classRec = $rec;
+            $class1->rectangles[$recLoc-1] = $rec;
             $jsonClass = json_encode($class1);
             $c1File = fopen('../text/class1.txt', 'w');
             fwrite($c1File, $jsonClass);
             fclose($c1File);
+            echo $jsonClass;
         }
+        $c1Count++;
     }
 }
 elseif ($class == '2') {
@@ -89,19 +90,20 @@ elseif ($class == '2') {
     $c2Count = 0;
 
     while ($c2Count < $numPeople) {
-        if ($person == (string)$class2->occupants[$c2Count]) {
-            $person = cast($class2->occupants[$c2Count], "Person");
-            $rec = cast($person->rectangle, "Rectangle");
+        $personFromFile = cast($class2->occupants[$c2Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
             $rec->clean();
-            $person->rectangle = $rec;
+            $personFromFile->rectangle = $rec;
             $recLoc = $rec->destinationId;
-            $classRec = $class2->rectangle[$recLoc];
-            $classRec = $rec;
+            $class2->rectangles[$recLoc-1] = $rec;
             $jsonClass = json_encode($class2);
-            $c2File = fopen('../text/class2.txt', 'w');
+            $c1File = fopen('../text/class2.txt', 'w');
             fwrite($c2File, $jsonClass);
             fclose($c2File);
+            echo $jsonClass;
         }
+        $c2Count++;
     }
 }
 else {
@@ -111,22 +113,21 @@ else {
     $c3Count = 0;
 
     while ($c3Count < $numPeople) {
-        if ($person == (string)$class3->occupants[$c3Count]) {
-            $person = cast($class3->occupants[$c3Count], "Person");
-            $rec = cast($person->rectangle, "Rectangle");
+        $personFromFile = cast($class3->occupants[$c3Count], "Person");
+        if ($person == $personFromFile->personId) {
+            $rec = cast($personFromFile->rectangle, "Cleaner");
             $rec->clean();
-            $person->rectangle = $rec;
+            $personFromFile->rectangle = $rec;
             $recLoc = $rec->destinationId;
-            $classRec = $class3->rectangle[$recLoc];
-            $classRec = $rec;
+            $class3->rectangles[$recLoc-1] = $rec;
             $jsonClass = json_encode($class3);
             $c3File = fopen('../text/class3.txt', 'w');
             fwrite($c3File, $jsonClass);
             fclose($c3File);
+            echo $jsonClass;
         }
+        $c3Count++;
     }
 }
-
-echo $jsonClass;
 
 ?>

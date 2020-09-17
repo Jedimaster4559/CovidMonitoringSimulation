@@ -316,18 +316,18 @@ function handleAislewayAlerts(tileId, tile){
 // Clears the state of the GUI
 function clearGUI(){
     document.getElementById("001-sanitizer-box").checked = false;
-    document.getElementById("001-people").innerHTML = "";
-    document.getElementById("002-people").innerHTML = "";
-    document.getElementById("003-people").innerHTML = "";
-    document.getElementById("004-people").innerHTML = "";
-    document.getElementById("005-people").innerHTML = "";
-    document.getElementById("006-people").innerHTML = "";
-    document.getElementById("007-people").innerHTML = "";
-    document.getElementById("008-people").innerHTML = "";
-    document.getElementById("009-people").innerHTML = "";
-    document.getElementById("010-people").innerHTML = "";
-    document.getElementById("011-people").innerHTML = "";
-    document.getElementById("012-people").innerHTML = "";
+    document.getElementById("1-people").innerHTML = "";
+    document.getElementById("2-people").innerHTML = "";
+    document.getElementById("3-people").innerHTML = "";
+    document.getElementById("4-people").innerHTML = "";
+    document.getElementById("5-people").innerHTML = "";
+    document.getElementById("6-people").innerHTML = "";
+    document.getElementById("7-people").innerHTML = "";
+    document.getElementById("8-people").innerHTML = "";
+    document.getElementById("9-people").innerHTML = "";
+    document.getElementById("10-people").innerHTML = "";
+    document.getElementById("11-people").innerHTML = "";
+    document.getElementById("12-people").innerHTML = "";
 }
 
 // Clears the Styling on all tiles so new alerts can
