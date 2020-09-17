@@ -11,7 +11,7 @@ function movePerson(formData) {
 
     request.onreadystatechange = function () {
         if (request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -27,7 +27,7 @@ function updatePersonState(formData) {
 
     request.onreadystatechange = function () {
         if (request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -41,7 +41,7 @@ function useLysol(formData) {
 
     request.onreadystatechange = function () {
         if (request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -55,7 +55,7 @@ function useSanitizer(formData) {
 
     request.onreadystatechange = function () {
         if (request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -71,7 +71,7 @@ function addPerson(formData) {
 
     request.onreadystatechange = function () {
         if(request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -86,7 +86,7 @@ function startClass(formData) {
 
     request.onreadystatechange = function (){
         if(request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -103,7 +103,7 @@ function endClass(formData) {
 
     request.onreadystatechange = function () {
         if(request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
@@ -121,7 +121,7 @@ function updateClassroom() {
 
     request.onreadystatechange = function() {
         if(request.readyState == 4);
-            // TODO implement callback
+            processResponse();
     }
 
     request.send();
