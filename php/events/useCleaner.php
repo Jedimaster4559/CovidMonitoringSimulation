@@ -70,13 +70,17 @@ if ($class == '1') {
         if ($person == (string)$class1->occupants[$c1Count]) {
             $person = cast($class1->occupants[$c1Count], "Person");
             $rec = cast($person->rectangle, "Rectangle");
+            $rec->clean();
+            $person->rectangle = $rec;
+            $recLoc = $rec->destinationId;
+            $classRec = $class1->rectangle[$recLoc];
+            $classRec = $rec;
+            $jsonClass = json_encode($class1);
+            $c1File = fopen('../text/class1.txt', 'w');
+            fwrite($c1File, $jsonClass);
+            fclose($c1File);
         }
     }
-    $rec->clean();
-    $person->rectangle = $rec;
-    $jsonClass = json_encode($class1);
-    $c1File = fopen('../text/class1.txt', 'w');
-    fwrite($c1File, $jsonClass);
 }
 elseif ($class == '2') {
     $c2Text = file_get_contents('../text/class2.txt');
@@ -88,13 +92,17 @@ elseif ($class == '2') {
         if ($person == (string)$class2->occupants[$c2Count]) {
             $person = cast($class2->occupants[$c2Count], "Person");
             $rec = cast($person->rectangle, "Rectangle");
+            $rec->clean();
+            $person->rectangle = $rec;
+            $recLoc = $rec->destinationId;
+            $classRec = $class2->rectangle[$recLoc];
+            $classRec = $rec;
+            $jsonClass = json_encode($class2);
+            $c2File = fopen('../text/class2.txt', 'w');
+            fwrite($c2File, $jsonClass);
+            fclose($c2File);
         }
     }
-    $rec->clean();
-    $person->rectangle = $rec;
-    $jsonClass = json_encode($class2);
-    $c2File = fopen('../text/class2.txt', 'w');
-    fwrite($c2File, $jsonClass);
 }
 else {
     $c3Text = file_get_contents('../text/class3.txt');
@@ -106,18 +114,19 @@ else {
         if ($person == (string)$class3->occupants[$c3Count]) {
             $person = cast($class3->occupants[$c3Count], "Person");
             $rec = cast($person->rectangle, "Rectangle");
+            $rec->clean();
+            $person->rectangle = $rec;
+            $recLoc = $rec->destinationId;
+            $classRec = $class3->rectangle[$recLoc];
+            $classRec = $rec;
+            $jsonClass = json_encode($class3);
+            $c3File = fopen('../text/class3.txt', 'w');
+            fwrite($c3File, $jsonClass);
+            fclose($c3File);
         }
     }
-    $rec->clean();
-    $person->rectangle = $rec;
-    $jsonClass = json_encode($class3);
-    $c3File = fopen('../text/class3.txt', 'w');
-    fwrite($c3File, $jsonClass);
 }
 
 echo $jsonClass;
-fclose('../text/class1.txt');
-fclose('../text/class2.txt');
-fclose('../text/class3.txt');
 
 ?>

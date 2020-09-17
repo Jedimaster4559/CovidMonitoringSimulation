@@ -10,7 +10,7 @@ function movePerson(formData) {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4);
+        if (request.readyState == 4)
             processResponse();
     }
 
@@ -25,7 +25,7 @@ function updatePersonState(formData) {
     requestContent = requestContent+'&faceshield='+formData.updateWearingFaceshield.checked;
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4);
+        if (request.readyState == 4)
             processResponse();
     }
 
@@ -35,11 +35,12 @@ function updatePersonState(formData) {
 function useLysol(formData) {
     request = new XMLHttpRequest();
     let requestContent = eventsDirectory+'useCleaner.php?';
+    requestContent = requestContent+'classroomId='+formData.addPersonClassroomId.value;
     requestContent = requestContent+'personId='+formData.useLysolPersonId.value;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4);
+        if (request.readyState == 4)
             processResponse();
     }
 
@@ -53,7 +54,7 @@ function useSanitizer(formData) {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
-        if (request.readyState == 4);
+        if (request.readyState == 4)
             processResponse();
     }
 
@@ -70,7 +71,7 @@ function addPerson(formData) {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
-        if(request.readyState == 4);
+        if(request.readyState == 4)
             processResponse();
     }
 
@@ -78,7 +79,6 @@ function addPerson(formData) {
 }
 
 function startClass(formData) {
-    testFunction();
     document.getElementById("startButton").style.visibility = "hidden";
 
     request = new XMLHttpRequest();
@@ -86,7 +86,7 @@ function startClass(formData) {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function (){
-        if(request.readyState == 4);
+        if(request.readyState == 4)
             processResponse();
     }
 
@@ -103,7 +103,7 @@ function endClass(formData) {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
-        if(request.readyState == 4);
+        if(request.readyState == 4)
             processResponse();
     }
 
@@ -121,7 +121,7 @@ function updateClassroom() {
     request.open("GET", requestContent);
 
     request.onreadystatechange = function() {
-        if(request.readyState == 4);
+        if(request.readyState == 4)
             processResponse();
     }
 
@@ -158,7 +158,7 @@ function processResponse(){
 // inside the classroom
 function processTiles(tiles){
     let tile1 = tiles[0];
-    updateEntranceGUI("001", tile);
+    updateEntranceGUI("001", tile1);
     handleEntranceAlerts("001", tile1);
     let tile2 = tiles[1];
     handleAislewayAlerts("002", tile2);
@@ -265,7 +265,9 @@ function reportError(tileId, alertText){
     document.getElementById(tileId + "-tile").style.backgroundColor = "#FF0000";
     document.getElementById(tileId + "-tile").style.color = "#FFFFFF";
 
-    alert("Alert!\nTileID: " + tileId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+    // alert("Alert!\nTileID: " + tileId + "\nClassroom: " + request.requestContent.classroomId + "\n" + alertText);
+    alert("Alert!\nTileID: " + tileId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
+
 }
 
 // Function to test that things are working properly

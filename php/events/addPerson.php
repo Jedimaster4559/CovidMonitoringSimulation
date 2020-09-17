@@ -26,6 +26,7 @@ if ($class == '1') {
         $jsonClass = json_encode($class1);
         $c1File = fopen('../text/class1.txt', 'w');
         fwrite($c1File, $jsonClass);
+        fclose($c1File);
     }
     else {
         $newPerson = new Person($person, $rec1);
@@ -35,6 +36,7 @@ if ($class == '1') {
         $jsonClass = json_encode($class1);
         $c1File = fopen('../text/class1.txt', 'w');
         fwrite($c1File, $jsonClass);
+        fclose($c1File);
     }
 }
 elseif ($class == '2') {
@@ -50,6 +52,7 @@ elseif ($class == '2') {
         $jsonClass = json_encode($class2);
         $c2File = fopen('../text/class2.txt', 'w');
         fwrite($c2File, $jsonClass);
+        fclose($c2File);
     }
     else {
         $newPerson = new Person($person, $rec1);
@@ -59,6 +62,7 @@ elseif ($class == '2') {
         $jsonClass = json_encode($class2);
         $c2File = fopen('../text/class2.txt', 'w');
         fwrite($c2File, $jsonClass);
+        fclose($c2File);
     }    
 }
 else {
@@ -74,6 +78,7 @@ else {
         $jsonClass = json_encode($class3);
         $c3File = fopen('../text/class1.txt', 'w');
         fwrite($c3File, $jsonClass);
+        fclose($c3File);
     }
     else {
         $newPerson = new Person($person, $rec1);
@@ -83,12 +88,10 @@ else {
         $jsonClass = json_encode($class3);
         $c3File = fopen('../text/class3.txt', 'w');
         fwrite($c3File, $jsonClass);
+        fclose($c3File);
     }
 }
 
 echo $jsonClass;
-fclose('../text/class1.txt');
-fclose('../text/class2.txt');
-fclose('../text/class3.txt');
 
 ?>

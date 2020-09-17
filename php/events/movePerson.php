@@ -97,4 +97,8 @@ else {
     }
 }
 
+fclose($c1File);
+fclose($c2File);
+fclose($c3File);
+
 ?>
