@@ -34,8 +34,8 @@ function updatePersonState(formData) {
 }
 
 function useLysol(formData) {
-    request = new XMLHttpeRequest();
-    let requestContent = eventsDirectory+'useLysol.php?';
+    request = new XMLHttpRequest();
+    let requestContent = eventsDirectory+'useCleaner.php?';
     requestContent = requestContent+'personId='+formData.useLysolPersonId.value;
     request.open("GET", requestContent);
 
@@ -49,7 +49,7 @@ function useLysol(formData) {
 
 function useSanitizer(formData) {
     request = new XMLHttpRequest();
-    let requestContent = eventsDirectory+'useSanitizer.php?';
+    let requestContent = eventsDirectory+'useCleaner.php?';
     requestContent = requestContent+'personId='+formData.useSanitizerPersonId.value;
     request.open("GET", requestContent);
 
@@ -130,4 +130,12 @@ function updateClassroom() {
 function getSelectedClassroom() {
     var e = document.getElementById("selectClassroomDropdown")
     return e.options[e.selectedIndex].value;
+}
+
+function processResponse(){
+    if(request.status == 200){
+        console.log(request.responseText);
+    } else {
+        console.log("Error: " + request.status);
+    }
 }
