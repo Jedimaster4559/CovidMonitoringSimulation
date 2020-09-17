@@ -7,6 +7,9 @@ $class = $_REQUEST["classroomId"];
 $person = $_REQUEST["personId"];
 $isTeacher = $_REQUEST["isTeacher"];
 
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
 // Fixes a PHP serialization issue
 // https://tommcfarlin.com/cast-a-php-standard-class-to-a-specific-type/
 function cast($instance, $className) {
