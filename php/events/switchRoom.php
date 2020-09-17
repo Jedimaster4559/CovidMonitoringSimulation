@@ -1,21 +1,22 @@
 <?php
-include '../classroom.php';
-include '../person.php';
-include '../rectangle.php';
-include 'start.php';
+include_once('../classroom.php');
+include_once('../person.php');
+include_once('../rectangle.php');
 
-$class = $__GET;
+$class = $_REQUEST["classroomId"];
+
+
 
 if ($class == 1) {
-    $jsonClass = json_encode($class1);
+    $jsonClass = file_get_contents('../text/class1.txt');
     echo $jsonClass;
 }
 elseif ($class == 2) {
-    $jsonClass = json_encode($class2);
+    $jsonClass = file_get_contents('../text/class2.txt');
     echo $jsonClass;
 }
 else {
-    $jsonClass = json_encode($class3);
+    $jsonClass = file_get_contents('../text/class3.txt');
     echo $jsonClass;
 }
 

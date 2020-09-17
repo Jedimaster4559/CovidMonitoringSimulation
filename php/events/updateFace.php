@@ -1,12 +1,11 @@
 <?php
-include '../classroom.php';
-include '../person.php';
-include '../rectangle.php';
-include 'start.php';
+include_once('../classroom.php');
+include_once('../person.php');
+include_once('../rectangle.php');
 
-$person = $__GET;
-$mask = $__GET;
-$faceshield = $__GET;
+$person = $_REQUEST["personId"];
+$mask = $_REQUEST["mask"];
+$faceshield = $_REQUEST["faceshield"];
 $personClass;
 $continue = true;
 

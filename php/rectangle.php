@@ -2,7 +2,7 @@
 
 class Rectangle {
     // Member variables
-    public $people;
+    public $people = 0;
     public $type;
     public $destinationId;
     public $tooManyPeopleAlarm = false;
