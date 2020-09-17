@@ -1,7 +1,7 @@
 <?php
-include '../classroom.php';
-include '../person.php';
-include '../rectangle.php';
+include_once('../classroom.php');
+include_once('../person.php');
+include_once('../rectangle.php');
 
 $class1 = new Classroom(1);
 

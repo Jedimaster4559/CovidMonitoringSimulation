@@ -1,10 +1,10 @@
 <?php
-include '../classroom.php';
-include '../person.php';
-include '../rectangle.php';
-include 'start.php';
+include_once('../classroom.php');
+include_once('../person.php');
+include_once('../rectangle.php');
+include_once('start.php');
 
-$class = $__GET;
+$class = $_REQUEST["classroomId"];
 
 if ($class == 1) {
     $jsonClass = json_encode($class1);

@@ -1,13 +1,13 @@
 <?php
-include '../classroom.php';
-include '../person.php';
-include '../rectangle.php';
-include 'start.php';
+include_once('../classroom.php');
+include_once('../person.php');
+include_once('../rectangle.php');
+include_once('start.php');
 
-$class = $__GET;
-$person = $__GET;
-$destination = $__GET;
-$wipe = $__GET;
+$class = $_REQUEST["classroomId"];
+$person = $_REQUEST["personId"];
+$destination = $_REQUEST["destinationId"];
+$wipe = $_REQUEST["wipe"];
 
 if ($class == 1) {
     $people = $class1->occupants;
