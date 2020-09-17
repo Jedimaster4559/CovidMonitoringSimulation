@@ -28,13 +28,14 @@ Format: GET
 ```
 Fields
 ```
+classroomId: int
 personId: int
 mask: boolean
 faceshield: boolean
 ```
 Example Request
 ```
-events.php?personId=2&mask=true&faceshield=false
+events.php?classroomId=2&personId=2&mask=true&faceshield=false
 ```
 
 ## Use Lysol
@@ -44,11 +45,12 @@ Format: GET
 ```
 Fields
 ```
+classroomId: int
 personId: int
 ```
 Example Request
 ```
-events.php?personId=5
+events.php?classroomId=2&personId=5
 ```
 
 ## Use Hand Sanitizer
@@ -58,11 +60,12 @@ Format: GET
 ```
 Fields
 ```
+classroomId: int
 personId: int
 ```
 Example Request
 ```
-events.php?personId=5
+events.php?classroomId=2&personId=5
 ```
 
 ## Request Data Update
