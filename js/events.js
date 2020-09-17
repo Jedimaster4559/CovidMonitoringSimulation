@@ -7,7 +7,6 @@ function movePerson(formData) {
     requestContent = requestContent+'classroomId='+getSelectedClassroom();
     requestContent = requestContent+'&personId='+formData.movePersonId.value;
     requestContent = requestContent+'&destinationId='+formData.moveDestinationSquare.value;
-    requestContent = requestContent+'&wipe='+formData.movePersonWipe.checked;
     request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
@@ -26,6 +25,7 @@ function updatePersonState(formData) {
     requestContent = requestContent+'&personId='+formData.updatePersonId.value;
     requestContent = requestContent+'&mask='+formData.updateWearingMask.checked;
     requestContent = requestContent+'&faceshield='+formData.updateWearingFaceshield.checked;
+    request.open("GET", requestContent);
 
     request.onreadystatechange = function () {
         if (request.readyState == 4)
@@ -206,6 +206,7 @@ function processTiles(tiles){
 }
 
 function processPeople(people){
+    console.log(people);
     people.forEach(person => {
         if(person.status == "student"){
             addStudentToGUI(person);
@@ -227,13 +228,15 @@ function addStudentToGUI(student){
     personHTML = personHTML + student.personId + "-student-detail\">";
     personHTML = personHTML + "Student #" + student.personId +"<br>";
     personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + student.personId + "-student-mask\" disabled>";
-    personHTML = personHTML + "</div>";
+    personHTML = personHTML + "id=\"" + student.personId + "-student-mask\" disabled";
+    if(!student.mastErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + "></div>";
 
     // Display and update content
     let updatedContent = previousContent + personHTML;
     document.getElementById(tileId+"-people").innerHTML = updatedContent;
-    document.getElementById(student.personId.toString() + "-student-mask").checked = !student.maskErrorAlarm;
 }
 
 // Adds a teacher to the gui display
@@ -246,10 +249,16 @@ function addTeacherToGUI(teacher){
     personHTML = personHTML + teacher.personId + "-teacher-detail\">";
     personHTML = personHTML + "Teacher #" + teacher.personId +"<br>";
     personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-mask\" disabled><br>";
-    personHTML = personHTML + "Wearing Face Shield: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-shield\" disabled><br>";
-    personHTML = personHTML + "</div>";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-mask\" disabled";
+    if(!teacher.maskErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + ">Wearing Face Shield: <input type=\"checkbox\" ";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-shield\" disabled";
+    if(!teacher.shieldErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + "></div>";
 
     // Display and update content
     let updatedContent = previousContent + personHTML;
@@ -271,7 +280,7 @@ function handleTeacherAlerts(teacher){
         reportTeacherError(teacher.personId.toString(), "A Teacher is not wearing their face mask");
     }
     if(teacher.shieldErrorAlarm){
-        reportTeacherError(student.personId.toString(), "A Teacher is not wearing their face shield");
+        reportTeacherError(teacher.personId.toString(), "A Teacher is not wearing their face shield");
     }
 }
 
@@ -283,7 +292,7 @@ function updateDeskGUI(tileId, tile){
 // Handles alerts for desks
 function handleDeskAlerts(tileId, tile){
     if(tile.noLysolUsedAlarm){
-        reportError(tileId, "Someone Left the tile without using the Hand Sanitizer");
+        reportError(tileId, "Someone Left the tile without using the Lysol Twice");
     }
     if(tile.tooManyPeopleAlarm){
         reportError(tileId, "There are too many people in this tile");
@@ -316,18 +325,18 @@ function handleAislewayAlerts(tileId, tile){
 // Clears the state of the GUI
 function clearGUI(){
     document.getElementById("001-sanitizer-box").checked = false;
-    document.getElementById("001-people").innerHTML = "";
-    document.getElementById("002-people").innerHTML = "";
-    document.getElementById("003-people").innerHTML = "";
-    document.getElementById("004-people").innerHTML = "";
-    document.getElementById("005-people").innerHTML = "";
-    document.getElementById("006-people").innerHTML = "";
-    document.getElementById("007-people").innerHTML = "";
-    document.getElementById("008-people").innerHTML = "";
-    document.getElementById("009-people").innerHTML = "";
-    document.getElementById("010-people").innerHTML = "";
-    document.getElementById("011-people").innerHTML = "";
-    document.getElementById("012-people").innerHTML = "";
+    document.getElementById("1-people").innerHTML = "";
+    document.getElementById("2-people").innerHTML = "";
+    document.getElementById("3-people").innerHTML = "";
+    document.getElementById("4-people").innerHTML = "";
+    document.getElementById("5-people").innerHTML = "";
+    document.getElementById("6-people").innerHTML = "";
+    document.getElementById("7-people").innerHTML = "";
+    document.getElementById("8-people").innerHTML = "";
+    document.getElementById("9-people").innerHTML = "";
+    document.getElementById("10-people").innerHTML = "";
+    document.getElementById("11-people").innerHTML = "";
+    document.getElementById("12-people").innerHTML = "";
 }
 
 // Clears the Styling on all tiles so new alerts can
@@ -374,7 +383,7 @@ function reportStudentError(personId, alertText){
     document.getElementById(personId + "-student-detail").style.backgroundColor = "#FF0000";
     document.getElementById(personId + "-student-detail").style.color = "#FFFFFF";
 
-    alert("Alert!\nStudentID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+    alert("Alert!\nStudentID: " + personId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
 }
 
 // Displays an error for a teacher
@@ -382,7 +391,7 @@ function reportTeacherError(personId, alertText){
     document.getElementById(personId + "-teacher-detail").style.backgroundColor = "#FF0000";
     document.getElementById(personId + "-teacher-detail").style.color = "#FFFFFF";
 
-    alert("Alert!\nTeacherID: " + personId + "\nClassroom: " + request.requestContent.classroom + "\n" + alertText);
+    alert("Alert!\nTeacherID: " + personId + "\nClassroom: " + getSelectedClassroom() + "\n" + alertText);
 }
 
 // Function to test that things are working properly

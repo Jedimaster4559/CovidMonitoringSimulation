@@ -24,13 +24,6 @@ class Person {
     public function wearMaskCorrectly() {
         $this->maskErrorAlarm = false;
     }
-
-    // Resets the Person's Rectangle
-    public function move($leaveRec, $destRec) {
-        $leaveRec->leave();
-        $this->rectangle = $destRec;
-        $destRec->addPerson();
-    }
 }
 
 class Instructor extends Person {
