@@ -227,13 +227,15 @@ function addStudentToGUI(student){
     personHTML = personHTML + student.personId + "-student-detail\">";
     personHTML = personHTML + "Student #" + student.personId +"<br>";
     personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + student.personId + "-student-mask\" disabled>";
-    personHTML = personHTML + "</div>";
+    personHTML = personHTML + "id=\"" + student.personId + "-student-mask\" disabled";
+    if(!student.mastErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + "></div>";
 
     // Display and update content
     let updatedContent = previousContent + personHTML;
     document.getElementById(tileId+"-people").innerHTML = updatedContent;
-    document.getElementById(student.personId.toString() + "-student-mask").checked = !student.maskErrorAlarm;
 }
 
 // Adds a teacher to the gui display
@@ -246,10 +248,16 @@ function addTeacherToGUI(teacher){
     personHTML = personHTML + teacher.personId + "-teacher-detail\">";
     personHTML = personHTML + "Teacher #" + teacher.personId +"<br>";
     personHTML = personHTML + "Wearing Face Mask: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-mask\" disabled><br>";
-    personHTML = personHTML + "Wearing Face Shield: <input type=\"checkbox\" ";
-    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-shield\" disabled><br>";
-    personHTML = personHTML + "</div>";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-mask\" disabled";
+    if(!teacher.maskErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + ">Wearing Face Shield: <input type=\"checkbox\" ";
+    personHTML = personHTML + "id=\"" + teacher.personId + "-teacher-shield\" disabled";
+    if(!teacher.shieldErrorAlarm){
+        personHTML = personHTML + " checked";
+    }
+    personHTML = personHTML + "></div>";
 
     // Display and update content
     let updatedContent = previousContent + personHTML;
