@@ -3,7 +3,7 @@ include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
 
-// Clears the text files
+// Clears the text files because class is over.
 $c1File = fopen("../text/class1.txt", "w");
 fwrite($c1File, "");
 fclose($c1File);

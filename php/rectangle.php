@@ -1,5 +1,8 @@
 <?php
 
+// The Rectangle object represents the different "squares" or "tiles" that
+// students and the instructor can go. A regular Rectangle has a 
+// "tooManyPeopleAlarm" that goes off if there are too many people.
 class Rectangle {
     // Member variables
     public $people = 0;
@@ -28,6 +31,9 @@ class Rectangle {
         }
     }
 
+    // Checks how many people are in the Rectangle. 
+    // If there are too many, tooManyPeopleAlarm 
+    // is set to true.
     public function checkPeople() {
         if ($this->people > 1) {
             $this->tooManyPeopleAlarm = true;
@@ -43,6 +49,10 @@ class Rectangle {
     }
 }
 
+// A Cleaner object is a Rectangle that also needs to be cleaned.
+// There are two types, a "desk" and the "entrance." Desks must
+// be wiped twice before a Person can leave. The entrance only
+// needs the Person to use the sanitizer once.
 class Cleaner extends Rectangle {
     // Member variables 
     public $cleanCount;

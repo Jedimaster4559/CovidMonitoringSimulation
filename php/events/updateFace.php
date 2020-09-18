@@ -3,6 +3,10 @@ include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
 
+// The updateFace event class takes in the classroomId of the
+// Classroom the Person is in, the PersonId, a bool of whether 
+// the Person is wearing a mask, and a bool of whether or not
+// the Person is wearing a faceshield
 $class = $_REQUEST["classroomId"];
 $person = $_REQUEST["personId"];
 $mask = $_REQUEST["mask"];
@@ -14,14 +18,21 @@ function cast($instance, $className) {
     return unserialize(sprintf('O:%d:"%s"%s', \strlen($className), $className, strstr(strstr(serialize($instance), '"'), ':')));    
 }
 
+// Checks which Classroom needs to be searched
 if ($class == '1') {
+    // Gets the Classroom object from the text file 
     $c1Text = file_get_contents('../text/class1.txt');
     $class1 = cast(json_decode($c1Text), "Classroom");
     $numPeople = count($class1->occupants);
     $c1Count = 0;
 
+    // Searches for the Person
     while ($c1Count < $numPeople) {
         $personFromFile = cast($class1->occupants[$c1Count], "Person");
+        // When the person is found, call the function that 
+        // changes the boolean value of the mask or 
+        // face shield and store the updated class in 
+        // the Classroom's text file.
         if ($person == $personFromFile->personId) {
             if ($mask == "false") {
                 $personFromFile->wearMaskIncorrectly();
@@ -63,6 +74,7 @@ if ($class == '1') {
     }
     echo $jsonClass;
 }
+// Do the same if the Classroom is 2.
 elseif ($class == '2') {
     $c2Text = file_get_contents('../text/class2.txt');
     $class2 = cast(json_decode($c2Text), "Classroom");
@@ -112,6 +124,7 @@ elseif ($class == '2') {
     }
     echo $jsonClass;
 }
+// Do the same if the Classroom is 3.
 else {
     $c3Text = file_get_contents('../text/class3.txt');
     $class3 = cast(json_decode($c3Text), "Classroom");

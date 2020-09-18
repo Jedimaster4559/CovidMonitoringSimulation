@@ -3,6 +3,9 @@ include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
 
+// The movePerson event class takes in the classroomId of the Person
+// to be moved, the Person's personId, and the ID of the Rectangle 
+// the Person wants to move to.
 $class = $_REQUEST["classroomId"];
 $person = $_REQUEST["personId"];
 $destination = $_REQUEST["destinationId"];

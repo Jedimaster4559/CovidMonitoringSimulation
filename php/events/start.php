@@ -3,6 +3,9 @@ include_once('../classroom.php');
 include_once('../person.php');
 include_once('../rectangle.php');
 
+// The start event class initializes all the Classrooms and Rectangles.
+// The resulting Classroom objects are stored in separate text files
+// for each Classroom as a JSON object. 
 $class1 = new Classroom(1);
 
 $rec1 = new Cleaner(1, "entrance");

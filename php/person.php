@@ -1,5 +1,7 @@
 <?php
 
+// A Person object is by default a "student," since 
+// the instructor also needs to have a "faceshield"
 class Person {
     // Member variables
     //public $mask;
@@ -26,6 +28,9 @@ class Person {
     }
 }
 
+// The Instructor object has a bool "shieldErrorAlarm"
+// that will be set to true when the Instructor 
+// is not correctly using their face shield. 
 class Instructor extends Person {
     // Member variables 
     public $shieldErrorAlarm = false;

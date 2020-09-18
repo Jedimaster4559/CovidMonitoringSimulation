@@ -1,5 +1,9 @@
 <?php
 
+// The Classroom object holds an array of the Rectangles 
+// and an array of the People in the Classroom along with 
+// a Classroom ID so that the user can switch to other
+// Classrooms.
 class Classroom {
     // Member variables
     public $rectangles = array();
